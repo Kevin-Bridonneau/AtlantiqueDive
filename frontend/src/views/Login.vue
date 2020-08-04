@@ -25,19 +25,32 @@
     },
     methods: {
       async login() {
-
         const body = {
-          // grant_type : "password",
-          // client_id: "2",
-          // client_secret: "xeT5tQPiyL1RdAqOiS5jbDRYF2opipYj5ei5BHU9",
-          username: this.email,
+          email: this.email,
           password: this.password
         }
-
-        const res = await auth.login(body)
-
-        console.log(res)
+        const res = await auth.login(body);
+        this.$store.state.userData = res.data;
+        this.$router.push({ path: '/dashboard' })
       }
     }
   }
 </script>
+
+
+
+
+
+
+// OAUTH 2 token
+        // const body = {
+        //   grant_type : "password",
+        //   client_id: "2",
+        //   client_secret: "xeT5tQPiyL1RdAqOiS5jbDRYF2opipYj5ei5BHU9",
+        //   username: this.email,
+        //   password: this.password
+        // }
+        // const res = await auth.login(body)
+        // this.$store.state.Api_Bearer_token = res.data.access_token
+        // this.$store.state.Api_Refresh_token = res.data.refresh_token
+        // console.log(res)

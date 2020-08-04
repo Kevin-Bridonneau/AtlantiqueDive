@@ -3,32 +3,64 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use GuzzleHttp\Client;
 
 class UserController extends Controller
 {
     function login(request $request){
-        $email = json_decode($request->getcontent())->username;
-        $password = json_decode($request->getcontent())->password;
+        $credentials = $request->only('email', 'password');
 
-        $http = new \GuzzleHttp\Client;
+        if (Auth::attempt($credentials)) {
+            
+            $user = Auth::user();
+            return response()->json($user);
 
-        $response = $http->post('http://localhost:8000//oauth/token', [
-            'form_params' => [
-                'grant_type' => 'password',
-                'client_id' => '2',
-                'client_secret' => 'client-secret',
-                'username' => $email,
-		        'password'  => $password
-            ],
-        ]);
+        }
 
-        return response()->json(array(
-            'response' => $response
-        ), 200);
+        return response()->json('unknown User');
+
+    }
+
+
+    function register(request $request){
+
+        $type = $request->only('type')['type'];
+        
+        if($type === "plongeur"){
+            $email = $request->only('email')['email'];
+            $name = $request->only('name')['name'];
+            $password = $request->only('password')['password'];
+            User::create([
+                'type' => $type,
+                'name' => $name,
+                'email' => $email,
+                'password' => Hash::make($password),
+            ]);
+            return response()->json('user created');
+        }
+        elseif($type === "club"){
+            $email = $request->only('email')['email'];
+            $name = $request->only('name')['name'];
+            $password = $request->only('password')['password'];
+            $adress = $request->only('adress')['adress'];
+            $phone = $request->only('phone')['phone'];
+            $website = $request->only('website')['website'];
+            User::create([
+                'type' => $type,
+                'name' => $name,
+                'email' => $email,
+                'adress' => $adress,
+                'phone' => $phone,
+                'website' => $website,
+                'password' => Hash::make($password),
+            ]);
+            return response()->json('user created');
+        }
+
+        return response()->json('user not created');
+
     }
 }
