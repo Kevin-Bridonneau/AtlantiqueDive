@@ -67,14 +67,13 @@
                         }
 
                         const res = await auth.register(body);
-                        console.log(res)
+                        this.$router.push({ path: '/login' })
                     }
                     else{
                         console.log('password don\'t match')
                     }
                 }
-                else if 
-                (this.type === "club"){
+                else if(this.type === "club"){
                     if(this.password !== "" && this.password === this.passwordComfirme ){
                         const body = {
                             type: this.type,
@@ -87,7 +86,7 @@
                         }
 
                         const res = await auth.register(body);
-                        console.log(res)
+                        this.$router.push({ path: '/login' })
                     }
                     else{
                         console.log('password don\'t match')
