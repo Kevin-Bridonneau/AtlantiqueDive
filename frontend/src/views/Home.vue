@@ -1,18 +1,34 @@
 <template>
   <div class="home">
     <gmap-map :center="center" :zoom="6" style="width:100%;  height: 400px;">
-      <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="popInfo(m)" >
+      <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="openWindow(m)">
       </gmap-marker>
+      <gmap-info-window @closeclick="window_open=false" :opened="window_open" :position="infowindow" :options="{
+          pixelOffset: {
+            width: 0,
+            height: -35
+          }
+        }">
+        <h2>{{ diveSiteName }}</h2>
+        <h4>Profondeur: {{ diveSiteDepth }}m</h4>
+        <h4>Latitude : {{ infowindow.lat }}</h4> 
+        <h4>Longitude : {{ infowindow.lng }}</h4>
+        <button @click="more">Plus d'infos</button>
+      </gmap-info-window>
     </gmap-map>
   </div>
 </template>
 
 <script>
-import auth from '@/services/authentification'
+  import Vue from 'vue';
+  import auth from '@/services/authentification';
+  import popUp from '@/components/mapPopUp.vue';
 
   export default {
     name: 'Home',
-    components: {},
+    components: {
+      popUp,
+    },
     data() {
       return {
         center: {
@@ -20,14 +36,20 @@ import auth from '@/services/authentification'
           lat: 46.1667,
           lng: -1.15
         },
-         markers: [],
+        markers: [],
+        info_marker: null,
+        infowindow: {lat: 0, lng: 0},
+        window_open: false,
+
+        diveSiteName: "",
+        diveSiteDepth: 0,
+
       }
     },
     async mounted() {
-      if(this.$store.state.markers[0] !== undefined){
+      if (this.$store.state.markers[0] !== undefined) {
         this.markers = this.$store.state.markers;
-      }
-      else{
+      } else {
         const res = await auth.getDiveSites();
         res.data.forEach(site => {
           this.markers.push({
@@ -46,12 +68,20 @@ import auth from '@/services/authentification'
         });
         this.$store.state.markers = this.markers;
       }
-      
+
     },
     methods: {
-      async popInfo(diveData){
-        console.log(diveData)
+      openWindow(diveData) {
+        this.infowindow.lat = diveData.position.lat;
+        this.infowindow.lng = diveData.position.lng;
+        this.diveSiteName = diveData.name;
+        this.diveSiteDepth = diveData.depth;
+        this.window_open = true;
+      },
+      more(){
+        console.log('redirection vers more')
       }
+
     }
   }
 </script>
