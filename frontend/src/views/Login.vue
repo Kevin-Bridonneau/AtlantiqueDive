@@ -23,6 +23,11 @@
         password: ""
       }
     },
+    async mounted(){
+      if(this.$store.state.userData.id != undefined){
+        this.$router.push({ path: '/home' })
+      }
+    },
     methods: {
       async login() {
         const body = {

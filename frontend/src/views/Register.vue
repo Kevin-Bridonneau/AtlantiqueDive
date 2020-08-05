@@ -55,10 +55,17 @@
                 website: "",
             }
         },
+        async mounted() {
+            if (this.$store.state.userData.id != undefined) {
+                this.$router.push({
+                    path: '/home'
+                })
+            }
+        },
         methods: {
             async register() {
-                if(this.type === "plongeur"){
-                    if(this.password !== "" && this.password === this.passwordComfirme ){
+                if (this.type === "plongeur") {
+                    if (this.password !== "" && this.password === this.passwordComfirme) {
                         const body = {
                             type: this.type,
                             name: this.name,
@@ -67,14 +74,14 @@
                         }
 
                         const res = await auth.register(body);
-                        this.$router.push({ path: '/login' })
-                    }
-                    else{
+                        this.$router.push({
+                            path: '/login'
+                        })
+                    } else {
                         console.log('password don\'t match')
                     }
-                }
-                else if(this.type === "club"){
-                    if(this.password !== "" && this.password === this.passwordComfirme ){
+                } else if (this.type === "club") {
+                    if (this.password !== "" && this.password === this.passwordComfirme) {
                         const body = {
                             type: this.type,
                             name: this.name,
@@ -86,9 +93,10 @@
                         }
 
                         const res = await auth.register(body);
-                        this.$router.push({ path: '/login' })
-                    }
-                    else{
+                        this.$router.push({
+                            path: '/login'
+                        })
+                    } else {
                         console.log('password don\'t match')
                     }
                 }

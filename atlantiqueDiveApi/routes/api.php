@@ -23,3 +23,5 @@ Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 
 Route::post('/divesite', 'DiveSitesController@add');
+
+Route::get('/divesites', 'DiveSitesController@getAllDiveSites');

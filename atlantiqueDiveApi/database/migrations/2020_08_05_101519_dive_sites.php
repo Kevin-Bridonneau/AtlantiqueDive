@@ -17,11 +17,12 @@ class DiveSites extends Migration
             $table->id();
             $table->string('name');
             $table->string('description');
-            $table->string('gps');
+            $table->float('lat');
+            $table->float('lng');
             $table->integer('depth');
             $table->string('visibility')->nullable();
             $table->string('current')->nullable();
-            $table->string('pathToPicture')->nullable();
+            $table->string('pathtopicture')->nullable();
         });
     }
 

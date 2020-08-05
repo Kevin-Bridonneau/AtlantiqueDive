@@ -8,7 +8,8 @@ export default new Vuex.Store({
     // 'baseURL' : "http://localhost:8000/",
     // 'Api_Bearer_token': "",
     // 'Api_Refresh_token': "",
-    'userData': {}
+    'userData': {},
+    'markers' : []
   },
   mutations: {},
   actions: {
