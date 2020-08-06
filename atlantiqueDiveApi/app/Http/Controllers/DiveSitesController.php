@@ -40,8 +40,18 @@ class DiveSitesController extends Controller
          [$dive_id, $user_id, now(),$msg,$rate]);
 
         return response()->json('notice added');
-
     }
+
+    function getNotice(request $request){
+        $dive_id = $request->only('dive_id')['dive_id'];
+        $notices  = DB::table('notice')
+                ->where('dive_id', $dive_id)
+                ->get();
+
+        return response()->json($notices);
+    }
+
+
 
     function addPresence(request $request){
         $dive_id = $request->only('dive_id')['dive_id'];
@@ -60,5 +70,16 @@ class DiveSitesController extends Controller
          [$dive_id, $club_id ]);
 
         return response()->json('presence added');
+    }
+
+
+    function getPresence(request $request){
+        $dive_id = $request->only('dive_id')['dive_id'];
+        $presences  = DB::table('presence')
+                ->join('users', 'users.id', '=', 'presence.club_id')
+                ->where('dive_id', $dive_id)
+                ->get();
+
+        return response()->json($presences);
     }
 }
