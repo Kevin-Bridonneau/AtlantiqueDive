@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="nav">
-      <div v-if="this.$store.state.userData.id == undefined">
+      <div v-if="this.$store.state.userData.name == undefined">
         <router-link to="/">Home</router-link> |
         <router-link to="/login">Login</router-link> |
         <router-link to="/register">Register</router-link>
@@ -10,7 +10,6 @@
         <router-link to="/">Home</router-link> |
         <router-link to="/dashboard">Dashboard</router-link>
       </div>
-
     </div>
     <router-view/>
   </div>

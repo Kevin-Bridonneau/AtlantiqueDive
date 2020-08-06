@@ -1,7 +1,8 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from "vuex-persistedstate";
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
@@ -11,8 +12,13 @@ export default new Vuex.Store({
     'userData': {},
     'markers' : []
   },
+  plugins: [createPersistedState()],
   mutations: {},
-  actions: {
+  actions: {},
+  getters: {
+    getUserData: state => {
+      return state.userData;
+    },
   },
   modules: {}
 })

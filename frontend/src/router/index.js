@@ -4,6 +4,7 @@ import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import Dashboard from '../views/Dashboard.vue'
+import DiveInfo from '../views/DiveInfo.vue'
 
 Vue.use(VueRouter)
 
@@ -27,6 +28,12 @@ Vue.use(VueRouter)
     path: '/dashboard',
     name: 'Dashboard',
     component: Dashboard
+  },
+  {
+    path: '/diveInfo',
+    name: 'DiveInfo',
+    component: DiveInfo,
+    props: true
   },
 ]
 

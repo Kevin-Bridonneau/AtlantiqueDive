@@ -1,5 +1,6 @@
 <template>
   <div class="home">
+    <navbar/>
     <gmap-map :center="center" :zoom="6" style="width:100%;  height: 400px;">
       <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="openWindow(m)">
       </gmap-marker>
@@ -16,18 +17,19 @@
         <button @click="more">Plus d'infos</button>
       </gmap-info-window>
     </gmap-map>
+    <button @click="submit">Proposer un nouveau site de plongée</button>
   </div>
 </template>
 
 <script>
   import Vue from 'vue';
   import auth from '@/services/authentification';
-  import popUp from '@/components/mapPopUp.vue';
+  import navbar from '@/components/Header.vue'
 
   export default {
     name: 'Home',
     components: {
-      popUp,
+      navbar,
     },
     data() {
       return {
@@ -43,10 +45,13 @@
 
         diveSiteName: "",
         diveSiteDepth: 0,
+        diveData:{},
+        user: {}
 
       }
     },
     async mounted() {
+      this.user = this.$parent.$store.state.userData;
       if (this.$store.state.markers[0] !== undefined) {
         this.markers = this.$store.state.markers;
       } else {
@@ -76,10 +81,14 @@
         this.infowindow.lng = diveData.position.lng;
         this.diveSiteName = diveData.name;
         this.diveSiteDepth = diveData.depth;
+        this.diveData = diveData;
         this.window_open = true;
       },
       more(){
-        console.log('redirection vers more')
+        this.$router.push({ name: 'DiveInfo', params: {diveData: this.diveData }})
+      },
+      submit(){
+        console.log('Soumission de nouveau site de plongée')
       }
 
     }
