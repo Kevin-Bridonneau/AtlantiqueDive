@@ -28,4 +28,37 @@ class DiveSitesController extends Controller
         $datas = DB::table('divesites')->get();
         return response()->json($datas);
     }
+
+    function addNotice(request $request){
+        $dive_id = $request->only('dive_id')['dive_id'];
+        $user_id = $request->only('user_id')['user_id'];
+        $msg = $request->only('msg')['msg'];
+        $rate = $request->only('rate')['rate'];
+
+        \DB::insert('insert into notice (dive_id, user_id, created_at, msg, rate)
+         values (?, ?, ?, ?, ?)', 
+         [$dive_id, $user_id, now(),$msg,$rate]);
+
+        return response()->json('notice added');
+
+    }
+
+    function addPresence(request $request){
+        $dive_id = $request->only('dive_id')['dive_id'];
+        $club_id = $request->only('club_id')['club_id'];
+        $datas  = DB::table('presence')
+                ->where('dive_id', $dive_id)
+                ->where('club_id', $club_id)
+                ->get()
+                ->count();
+        if($datas > 0){
+            return response()->json('presence already added');
+        }
+
+        \DB::insert('insert into presence (dive_id, club_id)
+         values (?, ?)', 
+         [$dive_id, $club_id ]);
+
+        return response()->json('presence added');
+    }
 }
