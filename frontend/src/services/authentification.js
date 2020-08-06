@@ -12,6 +12,14 @@ export default {
 
     getDiveSites(){
         return api.get('/api/divesites')
+    },
+
+    getNotice(credentials){
+        return api.get('/api/notice',{params:{ 'dive_id':credentials }})
+    },
+
+    getPresence(credentials){
+        return api.get('/api/presence',{params:{ 'dive_id':credentials }})
     }
 
 }
