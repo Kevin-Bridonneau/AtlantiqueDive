@@ -1,11 +1,14 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
-import * as VueGoogleMaps from 'vue2-google-maps'
+import Vue from 'vue';
+import App from './App.vue';
+import router from './router';
+import store from './store';
+import * as VueGoogleMaps from 'vue2-google-maps';
+import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-vue/dist/bootstrap-vue.css';
 
 Vue.config.productionTip = false
-
+Vue.use(BootstrapVue);
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyDe0VsXvXs5uB8ph3tw1BnIFsPYBwSWfgQ',
