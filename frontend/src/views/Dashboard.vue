@@ -62,5 +62,10 @@
                 })
             }
         },
+        methods: {
+            update(){
+                console.log(this.name)
+            }
+        }
     }
 </script>

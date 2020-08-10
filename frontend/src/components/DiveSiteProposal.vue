@@ -51,7 +51,7 @@
                 <label>Photo</label>
               </div>
               <div class="row">
-                <input type="file" name="picture">
+                <input type="file" @change="onFileChange">
               </div>
               <div class="row">
                 <h5>GPS (exemple : lattitude = 41.65487 )</h5>
@@ -95,14 +95,20 @@
         depth,
         visibility: "",
         current: "",
-        picture: "",
+        file: NULL,
         lat,
         lng
       }
     },
     async mounted() {},
     methods: {
+      async onFileChange(event){
+        this.file = event.target.file[0];
+        console.log(this.file)
+      },
       async submit() {
+
+        console.log(this.file)
         const body = {
           name: this.name,
           description: this.description,
