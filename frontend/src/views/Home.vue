@@ -59,7 +59,6 @@
       } else {
         const res = await auth.getDiveSites();
         res.data.forEach(site => {
-          if(site.verified === true){
             this.markers.push({
             'id': site.id,
             'name': site.name,
@@ -73,7 +72,6 @@
             'visibility': site.visibility,
             'pathtopicture': site.pathtopicture
             })
-          }
         });
         this.$store.state.markers = this.markers;
       }

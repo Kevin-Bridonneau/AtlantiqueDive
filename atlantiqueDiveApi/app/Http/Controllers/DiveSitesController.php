@@ -22,11 +22,10 @@ class DiveSitesController extends Controller
          [$name, $description, $depth, $visibility, $current, $pathToPicture, $lat, $lng,$verified]);
 
         return response()->json('Dive site created');
-
     }
 
     function getAllDiveSites(){
-        $datas = DB::table('divesites')->get();
+        $datas = DB::table('divesites')->where('verified','true')->get();
         return response()->json($datas);
     }
 
