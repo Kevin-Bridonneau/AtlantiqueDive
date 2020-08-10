@@ -23,6 +23,7 @@ class DiveSites extends Migration
             $table->string('visibility')->nullable();
             $table->string('current')->nullable();
             $table->string('pathtopicture')->nullable();
+            $table->boolean('verified');
         });
     }
 
