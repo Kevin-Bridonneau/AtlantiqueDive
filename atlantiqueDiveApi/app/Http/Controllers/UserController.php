@@ -59,8 +59,64 @@ class UserController extends Controller
             ]);
             return response()->json('user created');
         }
-
         return response()->json('user not created');
+    }
+
+    function update(request $request){
+
+        if($request->only('type')['type'] === NULL){
+            return response()->json(array(
+                'message'   =>  "Type not found"
+            ), 400);
+        }
+        elseif($request->only('id')['id'] === NULL){
+            return response()->json(array(
+                'message'   =>  "id not found"
+            ), 400);
+        }
+        $type = $request->only('type')['type'];
+        $id = $request->only('id')['id'];
+
+        $userData = \DB::table('users')->where('id', $id)->get();
+
+        if(count($userData) === 0){
+            return response()->json(array(
+                'message'   =>  "user not found"
+            ), 400);
+        }
+
+        $updateData = [];
+        if($request->only('name')['name'] !== NULL){
+            $name = $request->only('name')['name'];
+            $updateData['name'] = $name;
+        }
+        if($request->only('email')['email'] !== NULL){
+            $email =$request->only('email')['email'] ;
+            $updateData['email'] = $email;
+        }
+        if($request->only('password')['password'] !== NULL){
+            $password = $request->only('password')['password'];
+            $updateData['password'] = Hash::make($password);
+        }
+        if($type === "club"){
+            if($request->only('adress')['adress'] !== NULL){
+                $adress = $request->only('adress')['adress'];
+                $updateData['adress'] = $adress;
+            }
+            if($request->only('phone')['phone'] !== NULL){
+                $phone = $request->only('phone')['phone'];
+                $updateData['phone'] = $phone;
+            }
+            if($request->only('website')['website'] !== NULL){
+                $website = $request->only('website')['website'];
+                $updateData['$website'] = $website;
+            }
+        }
+            \DB::table('users')
+                    ->where('id', $id)
+                    ->update($updateData);
+
+            return response()->json('user updated');
 
     }
 }

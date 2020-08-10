@@ -20,6 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
+Route::post('/updateProfile', 'UserController@update');
 
 Route::post('/divesite', 'DiveSitesController@add');
 Route::get('/divesites', 'DiveSitesController@getAllDiveSites');
