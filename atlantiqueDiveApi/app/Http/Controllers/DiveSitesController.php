@@ -18,7 +18,7 @@ class DiveSitesController extends Controller
         $lng = $request->only('lng')['lng'];
         $verified = $request->only('verified')['verified'];
         \DB::insert('insert into divesites (name, description, depth, visibility, current, pathtopicture, lat, lng,verified)
-         values (?, ?, ?, ?, ?, ?, ?, ?)', 
+         values (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
          [$name, $description, $depth, $visibility, $current, $pathToPicture, $lat, $lng,$verified]);
 
         return response()->json('Dive site created');
