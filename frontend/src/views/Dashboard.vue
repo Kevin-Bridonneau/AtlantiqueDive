@@ -2,6 +2,16 @@
     <div class="dasboard">
         <h1>Mon compte</h1>
         <div class="container">
+            <div v-if="userData.type === 'admin'">
+                <div class="card">
+                    <h5 class="card-header">Management du site</h5>
+                    <div class="card-body d-flex justify-content-between">
+                        <a  @click="proposal()" class="btn btn-info">Soumission de site de plongée</a>
+                        <a  @click="users()" class="btn btn-info">Utilisateurs</a>
+                        <a  @click="diveSite()" class="btn btn-info">Sites de plongée</a>
+                    </div>
+                </div>
+            </div>
             <div v-if="userData.type === 'plongeur'">
                 <h3>{{ userData.type }}</h3>
                 <h6><label>Nom</label></h6>
@@ -37,6 +47,7 @@
 </template>
 
 <script>
+    import auth from '@/services/authentification';
     export default {
         name: 'dasboard',
         components: {
@@ -63,9 +74,67 @@
             }
         },
         methods: {
-            update(){
-                console.log(this.name)
-            }
+            async update() {
+                if (this.userData.type === "plongeur") {
+                    let body = {
+                        id: this.userData.id,
+                        type: this.userData.type,
+                        name: "",
+                        email: "",
+                        password: ""
+                    };
+                } else if (this.userData.type === "club") {
+                    let body = {
+                        id: this.userData.id,
+                        type: this.userData.type,
+                        name: "",
+                        email: "",
+                        password: "",
+                        adress: "",
+                        phone: "",
+                        website: ""
+                    };
+                    if (this.adress !== undefined) {
+                        body.adress = this.adress;
+                        this.$store.state.userData.adress = this.adress;
+                    };
+                    if (this.phone !== undefined) {
+                        body.phone = this.phone;
+                        this.$store.state.userData.phone = this.phone;
+                    };
+                    if (this.phone !== undefined) {
+                        body.phone = this.phone;
+                        this.$store.state.userData.phone = this.phone;
+                    };
+                    if (this.website !== undefined) {
+                        body.website = this.website;
+                        this.$store.state.userData.website = this.website;
+                    }
+                }
+                if (this.password !== undefined && this.password === this.passwordComfirme) {
+                    body.password = this.password;
+                }
+                if (this.name !== undefined) {
+                    body.name = this.name;
+                    this.$store.state.userData.name = this.name;
+                }
+                if (this.email !== undefined) {
+                    body.email = this.email;
+                    this.$store.state.userData.email = this.email;
+                }
+
+                const res = await auth.updateProfile(body);
+                this.userData = this.$store.state.userData;
+            },
+            proposal(){
+                console.log('proposal')
+            },
+            users(){
+                console.log('users')
+            },
+            diveSite(){
+                console.log('diveSite')
+            },
         }
     }
 </script>

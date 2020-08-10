@@ -103,11 +103,9 @@
     async mounted() {},
     methods: {
       async onFileChange(event){
-        this.file = event.target.file[0];
-        console.log(this.file)
+        this.file = event.target.files[0];
       },
       async submit() {
-
         console.log(this.file)
         const body = {
           name: this.name,

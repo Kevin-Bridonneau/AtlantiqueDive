@@ -17,7 +17,7 @@
         <button @click="more">Plus d'infos</button>
       </gmap-info-window>
     </gmap-map>
-    <button @click="submit">Proposer un nouveau site de plongée</button>
+    <button v-if="this.$store.state.userData.name != undefined" @click="submit">Proposer un nouveau site de plongée</button>
   </div>
 </template>
 

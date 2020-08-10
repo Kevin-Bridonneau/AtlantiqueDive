@@ -11,6 +11,10 @@ export default {
         return api.post('/api/register',credentials)
     },
 
+    updateProfile(credentials){
+        return api.post('/api/updateProfile',credentials)
+    },
+
     getDiveSites(){
         return api.get('/api/divesites')
     },
