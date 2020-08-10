@@ -21,6 +21,10 @@ export default {
 
     getPresence(credentials){
         return api.get('/api/presence',{params:{ 'dive_id':credentials }})
+    },
+
+    addDiveSite(credentials){
+        return api.post('/api/divesite',credentials)
     }
 
 }

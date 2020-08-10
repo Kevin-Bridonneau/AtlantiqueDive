@@ -24,12 +24,14 @@
 <script>
   import Vue from 'vue';
   import auth from '@/services/authentification';
-  import navbar from '@/components/Header.vue'
+  import navbar from '@/components/Header.vue';
+  import DiveSiteProposal from '@/components/DiveSiteProposal.vue'
 
   export default {
     name: 'Home',
     components: {
       navbar,
+      DiveSiteProposal,
     },
     data() {
       return {
@@ -46,7 +48,7 @@
         diveSiteName: "",
         diveSiteDepth: 0,
         diveData:{},
-        user: {}
+        user: {},  
 
       }
     },
@@ -57,7 +59,8 @@
       } else {
         const res = await auth.getDiveSites();
         res.data.forEach(site => {
-          this.markers.push({
+          if(site.verified === true){
+            this.markers.push({
             'id': site.id,
             'name': site.name,
             'description': site.description,
@@ -69,7 +72,8 @@
             'current': site.current,
             'visibility': site.visibility,
             'pathtopicture': site.pathtopicture
-          })
+            })
+          }
         });
         this.$store.state.markers = this.markers;
       }
@@ -88,9 +92,11 @@
         this.$router.push({ name: 'DiveInfo', params: {diveData: this.diveData }})
       },
       submit(){
-        console.log('Soumission de nouveau site de plongée')
+        let ComponentClass = Vue.extend(DiveSiteProposal)
+        let instance = new ComponentClass
+        instance.$mount() // pass nothing
+        document.body.append(instance.$el);
       }
-
     }
   }
 </script>
