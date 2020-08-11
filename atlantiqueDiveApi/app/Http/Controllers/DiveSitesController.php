@@ -44,13 +44,11 @@ class DiveSitesController extends Controller
 
     function getNotice(request $request){
         $dive_id = $request->only('dive_id')['dive_id'];
-        
         $notices  = DB::table('notice')
                 ->select('notice.id','dive_id','notice.created_at','msg','rate','user_id','users.name','users.email')
                 ->join('users', 'users.id', '=', 'notice.user_id')
                 ->where('dive_id', $dive_id)
                 ->get();
-
         return response()->json($notices);
     }
 
@@ -79,6 +77,7 @@ class DiveSitesController extends Controller
     function getPresence(request $request){
         $dive_id = $request->only('dive_id')['dive_id'];
         $presences  = DB::table('presence')
+                ->select('presence.id','dive_id','club_id','users.name','users.email','users.adress','users.website','users.phone')
                 ->join('users', 'users.id', '=', 'presence.club_id')
                 ->where('dive_id', $dive_id)
                 ->get();

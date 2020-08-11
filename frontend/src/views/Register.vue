@@ -88,7 +88,7 @@
                             email: this.email,
                             password: this.password,
                             adress: this.adress,
-                            phone: this.password,
+                            phone: this.phone,
                             website: this.website
                         }
 

@@ -13,10 +13,11 @@
       <h5>Vous avez déja donner votre avis sur cette plongée</h5>
     </div>
     <h1>Clubs</h1>
-    {{ presences }}
-    <div v-if="this.$store.state.userData.type === 'club' " >
-      <!-- ajout d'un 2eme if a faire pour controller si club déja ajouté sur site -->
-        <button>Ma structure propose ce site de plongée</button>
+    <div v-for="presence in presences" :key="presence.id">
+          {{ presence }}
+    </div>
+    <div v-if="addPresenceButton === true" >
+      <button @click="addPresence">Mon club propose cette plongée</button>
     </div>
     <div v-if="check === true" >
       <addNotice/>
@@ -41,6 +42,7 @@
         presences: [],
         check: false,
         addNoticeButton: false,
+        addPresenceButton: false,
       }
     },
     async beforeMount(){
@@ -60,7 +62,6 @@
       this.presences = res.data;
 
       if(this.$store.state.userData.type === 'plongeur'){
-        
         this.notices.forEach(notice => {
           if(notice.user_id !== this.$store.state.userData.id){
             this.addNoticeButton = true;  
@@ -69,14 +70,32 @@
             this.addNoticeButton = false
           }
         });
-      
+      }
+      if(this.$store.state.userData.type === 'club'){
+        this.presences.forEach(presence => {
+          if(presence.club_id !== this.$store.state.userData.id){
+            this.addPresenceButton = true;  
+          }
+          else{
+            this.addPresenceButton = false
+          }
+        });
       }
       
     },
     methods: {
-        async addNotice(){
-          this.check = true;
+      async addNotice(){
+        this.check = true;
+      },
+      async addPresence(){
+        const body = {
+                    dive_id: this.diveData.id,
+                    club_id: this.$store.state.userData.id
+                }
+        const res = await auth.addPresence(body);
+        console.log(res)
       }
+
     }
   }
 </script>
