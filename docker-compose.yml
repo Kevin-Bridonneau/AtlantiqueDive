@@ -1,6 +1,16 @@
 version: '3.7'
 
 services:
+    www:
+      image: nginx:alpine
+      volumes:
+        - ./etc/nginx/conf.d/default.conf.nginx:/etc/nginx/conf.d/default.conf
+      ports:
+        - 80:80
+      depends_on:
+        - backend
+        - frontend
+        
     db:
       image: mariadb
       restart: always
@@ -14,13 +24,21 @@ services:
       volumes:
         - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
         
-    # api:
-    #   image: php
-    #   build: ./atlantiqueDiveApi
-    #   ports:
-    #     - '8000:8000'
-    #   depends_on: 
-    #     - db
+    backend:
+      image: php
+      build: ./atlantiqueDiveApi
+      ports:
+        - '8000:8000'
+      depends_on: 
+        - db
+    
+    frontend:
+      image: node:lts-alpine
+      build: ./frontend
+      ports:
+        - '8080:8080'
+      depends_on: 
+        - backend
 
 
 
