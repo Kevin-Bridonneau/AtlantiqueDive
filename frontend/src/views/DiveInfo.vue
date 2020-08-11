@@ -93,7 +93,9 @@
                     club_id: this.$store.state.userData.id
                 }
         const res = await auth.addPresence(body);
-        console.log(res)
+        this.$router.push({
+                    path: '/home'
+                })
       }
 
     }

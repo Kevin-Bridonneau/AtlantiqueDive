@@ -32,7 +32,7 @@ export default {
     },
 
     addPresence(credentials){
-        return api.post('/api/presence',{params:{ 'dive_id':credentials.dive_id }})
+        return api.post('/api/presence', credentials)
     },
 
     addDiveSite(credentials){

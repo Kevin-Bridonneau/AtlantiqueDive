@@ -65,6 +65,9 @@
                 }
                 const res = await auth.addNotice(body);
                 this.$parent.check = false;
+                this.$router.push({
+                    path: '/home'
+                })
             },
             cancel() {
                 this.$parent.check = false;
