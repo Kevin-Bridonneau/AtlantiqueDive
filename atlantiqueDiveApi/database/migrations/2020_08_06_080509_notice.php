@@ -21,16 +21,6 @@ class Notice extends Migration
             $table->timestamp('created_at');
             $table->string('msg');
             $table->integer('rate');
-            $table->foreign('dive_id')
-            ->references('id')
-            ->on('divesites')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-            $table->foreign('user_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
         });
     }
 

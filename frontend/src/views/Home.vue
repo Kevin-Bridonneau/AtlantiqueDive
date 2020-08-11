@@ -74,6 +74,7 @@
             })
         });
         this.$store.state.markers = this.markers;
+        console.log(res)
       }
 
     },

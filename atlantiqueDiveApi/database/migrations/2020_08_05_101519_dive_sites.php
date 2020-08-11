@@ -16,7 +16,7 @@ class DiveSites extends Migration
         Schema::create('divesites', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->string('description',5000);
             $table->float('lat');
             $table->float('lng');
             $table->integer('depth');

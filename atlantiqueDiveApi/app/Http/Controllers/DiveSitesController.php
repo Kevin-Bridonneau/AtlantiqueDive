@@ -25,7 +25,7 @@ class DiveSitesController extends Controller
     }
 
     function getAllDiveSites(){
-        $datas = DB::table('divesites')->where('verified','true')->get();
+        $datas = DB::table('divesites')->where('verified', 1 )->get();
         return response()->json($datas);
     }
 

@@ -2,23 +2,25 @@ version: '3.7'
 
 services:
     db:
-      image: postgres:9.6-alpine
+      image: mariadb
+      restart: always
       ports:
-        - '5432:5432'
+        - '3306:3306'
       environment:
-        POSTGRES_USER: 'daegon'
-        POSTGRES_PASSWORD: '0000'
-        POSTGRES_DB: 'atlantiqueDiveSite'
+        MYSQL_ROOT_PASSWORD: '0000'
+        MYSQL_USER: 'daegon'
+        MYSQL_PASSWORD: '0000'
+        MYSQL_DATABASE: 'atlantiqueDiveSite'
       volumes:
         - ./init/init.sql:/docker-entrypoint-initdb.d/init.sql
         
-    api:
-      image: php
-      build: ./atlantiqueDiveApi
-      ports:
-        - '8000:8000'
-      depends_on: 
-        - db
+    # api:
+    #   image: php
+    #   build: ./atlantiqueDiveApi
+    #   ports:
+    #     - '8000:8000'
+    #   depends_on: 
+    #     - db
 
 
 

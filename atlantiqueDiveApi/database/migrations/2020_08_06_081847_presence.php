@@ -18,16 +18,6 @@ class Presence extends Migration
             $table->id();
             $table->integer('dive_id');
             $table->integer('club_id');
-            $table->foreign('dive_id')
-            ->references('id')
-            ->on('divesites')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
-            $table->foreign('club_id')
-            ->references('id')
-            ->on('users')
-            ->onDelete('restrict')
-            ->onUpdate('restrict');
         });
     }
 
