@@ -19,6 +19,10 @@ export default {
         return api.get('/api/divesites')
     },
 
+    addNotice(credentials){
+        return api.post('/api/notice', credentials)
+    },
+
     getNotice(credentials){
         return api.get('/api/notice',{params:{ 'dive_id':credentials }})
     },

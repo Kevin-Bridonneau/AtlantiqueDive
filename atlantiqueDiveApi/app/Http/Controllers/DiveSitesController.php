@@ -46,6 +46,7 @@ class DiveSitesController extends Controller
         $dive_id = $request->only('dive_id')['dive_id'];
         
         $notices  = DB::table('notice')
+                ->select('notice.id','dive_id','notice.created_at','msg','rate','user_id','users.name','users.email')
                 ->join('users', 'users.id', '=', 'notice.user_id')
                 ->where('dive_id', $dive_id)
                 ->get();

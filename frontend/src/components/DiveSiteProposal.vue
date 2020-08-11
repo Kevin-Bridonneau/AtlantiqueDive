@@ -92,12 +92,12 @@
       return {
         description: "",
         name: "",
-        depth,
+        depth: 0,
         visibility: "",
         current: "",
-        file: NULL,
-        lat,
-        lng
+        file: null,
+        lat: 0,
+        lng: 0
       }
     },
     async mounted() {},
@@ -106,7 +106,6 @@
         this.file = event.target.files[0];
       },
       async submit() {
-        console.log(this.file)
         const body = {
           name: this.name,
           description: this.description,
@@ -121,12 +120,10 @@
 
         }
         const res = await auth.addDiveSite(body);
-        let pop = document.getElementById('DiveSiteProposal');
-        document.body.removeChild(pop);
+        this.$parent.check = false;
       },
       cancel() {
-        let pop = document.getElementById('DiveSiteProposal');
-        document.body.removeChild(pop);
+        this.$parent.check = false;
       }
     }
   }

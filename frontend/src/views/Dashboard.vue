@@ -51,7 +51,8 @@
     export default {
         name: 'dasboard',
         components: {
-            data() {
+        },
+        data() {
                 return {
                     userData: {},
                     name: "",
@@ -62,7 +63,6 @@
                     phone: "",
                     website: "",
                 }
-            },
         },
         beforeMount() {
             this.userData = this.$store.state.userData;
@@ -75,8 +75,9 @@
         },
         methods: {
             async update() {
+                let body = {};
                 if (this.userData.type === "plongeur") {
-                    let body = {
+                    body = {
                         id: this.userData.id,
                         type: this.userData.type,
                         name: "",
@@ -84,7 +85,7 @@
                         password: ""
                     };
                 } else if (this.userData.type === "club") {
-                    let body = {
+                    body = {
                         id: this.userData.id,
                         type: this.userData.type,
                         name: "",

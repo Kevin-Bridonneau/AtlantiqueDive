@@ -18,11 +18,14 @@
       </gmap-info-window>
     </gmap-map>
     <button v-if="this.$store.state.userData.name != undefined" @click="submit">Proposer un nouveau site de plongée</button>
+    <div v-if="check === true">
+      <DiveSiteProposal/>
+    </div>
+    
   </div>
 </template>
 
 <script>
-  import Vue from 'vue';
   import auth from '@/services/authentification';
   import navbar from '@/components/Header.vue';
   import DiveSiteProposal from '@/components/DiveSiteProposal.vue'
@@ -35,6 +38,7 @@
     },
     data() {
       return {
+        check: false,
         center: {
           //center to La Rochelle city
           lat: 46.1667,
@@ -74,7 +78,6 @@
             })
         });
         this.$store.state.markers = this.markers;
-        console.log(res)
       }
 
     },
@@ -91,10 +94,7 @@
         this.$router.push({ name: 'DiveInfo', params: {diveData: this.diveData }})
       },
       submit(){
-        let ComponentClass = Vue.extend(DiveSiteProposal)
-        let instance = new ComponentClass
-        instance.$mount() // pass nothing
-        document.body.append(instance.$el);
+        this.check = true;
       }
     }
   }
