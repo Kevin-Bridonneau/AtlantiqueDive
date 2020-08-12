@@ -1,5 +1,9 @@
-FROM php
+FROM php:7.4-fpm
 
+ARG user
+ARG uid
+
+USER root
 # Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
@@ -19,11 +23,23 @@ RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-VOLUME . ./backend
+# Create system user to run Composer and Artisan Commands
+# RUN useradd -G www-data,root -u $uid -d /home/$user $user
+# RUN mkdir -p /home/$user/.composer && \
+#     chown -R $user:$user /home/$user
+
+RUN mkdir -p /backend
+
+ADD . /backend/
 
 WORKDIR /backend
 
 COPY .env.example /backend/.env
+
+# RUN chown -R $user:$user /backend
+
+
+# USER $user
 
 RUN composer install
 
@@ -31,4 +47,6 @@ RUN php artisan config:cache
 
 RUN php artisan key:generate
 
-RUN php artisan serve --host 0.0.0.0
+EXPOSE 8080
+
+CMD php artisan serve --host=0.0.0.0 --port=8080
