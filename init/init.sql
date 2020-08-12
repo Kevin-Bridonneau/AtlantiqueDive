@@ -3,11 +3,10 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 11, 2020 at 12:04 PM
+-- Generation Time: Aug 12, 2020 at 08:12 PM
 -- Server version: 5.7.31-0ubuntu0.18.04.1
--- PHP Version: 7.2.24-0ubuntu0.18.04.6
+-- PHP Version: 7.2.33-1+ubuntu18.04.1+deb.sury.org+1
 
-SET FOREIGN_KEY_CHECKS=0;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
@@ -30,7 +29,7 @@ SET time_zone = "+00:00";
 CREATE TABLE `divesites` (
   `id` bigint(20) UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` varchar(5000) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lat` double(8,2) NOT NULL,
   `lng` double(8,2) NOT NULL,
   `depth` int(11) NOT NULL,
@@ -39,6 +38,14 @@ CREATE TABLE `divesites` (
   `pathtopicture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `verified` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `divesites`
+--
+
+INSERT INTO `divesites` (`id`, `name`, `description`, `lat`, `lng`, `depth`, `visibility`, `current`, `pathtopicture`, `verified`) VALUES
+(1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).\n\nIl fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.37, -2.35, 47, 'Bonne', 'Moyen', '/image/test.jpg', 1),
+(2, 'Test', 'lelkfjzrejh zrkfrkjru fhkzerjhfskhdfjzehf', 18.00, -2.00, 32, 'Bonne', 'Moyen', '/image/test.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -72,17 +79,17 @@ CREATE TABLE `migrations` (
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
-(1, '2014_10_12_000000_create_users_table', 1),
-(2, '2014_10_12_100000_create_password_resets_table', 1),
-(3, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
-(4, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
-(5, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
-(6, '2016_06_01_000004_create_oauth_clients_table', 1),
-(7, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
-(8, '2019_08_19_000000_create_failed_jobs_table', 1),
-(9, '2020_08_05_101519_dive_sites', 1),
-(10, '2020_08_06_080509_notice', 1),
-(11, '2020_08_06_081847_presence', 1);
+(12, '2014_10_12_000000_create_users_table', 1),
+(13, '2014_10_12_100000_create_password_resets_table', 1),
+(14, '2016_06_01_000001_create_oauth_auth_codes_table', 1),
+(15, '2016_06_01_000002_create_oauth_access_tokens_table', 1),
+(16, '2016_06_01_000003_create_oauth_refresh_tokens_table', 1),
+(17, '2016_06_01_000004_create_oauth_clients_table', 1),
+(18, '2016_06_01_000005_create_oauth_personal_access_clients_table', 1),
+(19, '2019_08_19_000000_create_failed_jobs_table', 1),
+(20, '2020_08_05_101519_dive_sites', 1),
+(21, '2020_08_06_080509_notice', 1),
+(22, '2020_08_06_081847_presence', 1);
 
 -- --------------------------------------------------------
 
@@ -98,6 +105,14 @@ CREATE TABLE `notice` (
   `msg` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `rate` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `notice`
+--
+
+INSERT INTO `notice` (`id`, `dive_id`, `user_id`, `created_at`, `msg`, `rate`) VALUES
+(1, 1, 1, '2020-08-11 11:25:11', 'Ceci est un test', 4),
+(2, 1, 1, '2020-08-11 12:02:48', 'Un nouveau test', 5);
 
 -- --------------------------------------------------------
 
@@ -202,6 +217,14 @@ CREATE TABLE `presence` (
   `club_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `presence`
+--
+
+INSERT INTO `presence` (`id`, `dive_id`, `club_id`) VALUES
+(1, 1, 3),
+(2, 1, 4);
+
 -- --------------------------------------------------------
 
 --
@@ -228,7 +251,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `type`, `adress`, `phone`, `website`, `created_at`, `updated_at`) VALUES
-(1, 'Kevin Bridonneau', 'bridonneau.kevin@gmail.com', NULL, '$2y$10$nPVgYerRIsJzeA4m87TwqOjSudqonRMTQvvK8AmIfJq1rR43nUpD2', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 07:42:55', '2020-08-11 07:42:55');
+(1, 'KBEPITECH', 'bridonneau.kevin@gmail.com', NULL, '$2y$10$9o.w/Hu60Zv3APCYr1aBxe2W6lKD9JEUx.CI0PmkUggl0FSWiLen.', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 08:31:04', '2020-08-11 08:31:04'),
+(2, 'Jean Claude', 'test@gmail.com', NULL, '$2y$10$Z8ws/C25wjgdczObB591R.m7wOcvTDsbBeG8rYpbIMzEegr6ctpZG', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 12:28:39', '2020-08-11 12:28:39'),
+(3, 'SCY 85', 'scy85@gmail.com', NULL, '$2y$10$NXZG.9sV18zLJAMD363pwOAlV7Zatv/iqrFXMct1znaLBiiwGlU.u', NULL, 'club', 'La Roche Sur Yon', '0679802428', 'http://www.scy85.fr/', '2020-08-11 12:39:21', '2020-08-11 12:39:21'),
+(4, 'SCPTT', 'scptt@gmail.com', NULL, '$2y$10$FKkHVjScnSgLPpJM7LWyS.mnb1ZSQlm/jJzovm5CC.Iw1VJDQsE3S', NULL, 'club', 'Nantes', '0240512525', 'scptt@org.fr', '2020-08-11 13:03:05', '2020-08-11 13:03:05');
 
 --
 -- Indexes for dumped tables
@@ -319,7 +345,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `divesites`
 --
 ALTER TABLE `divesites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
@@ -329,12 +355,12 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 --
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `oauth_clients`
 --
@@ -349,13 +375,12 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `presence`
 --
 ALTER TABLE `presence`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;SET FOREIGN_KEY_CHECKS=1;
-
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
