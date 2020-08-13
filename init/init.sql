@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 12, 2020 at 08:12 PM
+-- Generation Time: Aug 13, 2020 at 10:36 AM
 -- Server version: 5.7.31-0ubuntu0.18.04.1
 -- PHP Version: 7.2.33-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -45,7 +45,8 @@ CREATE TABLE `divesites` (
 
 INSERT INTO `divesites` (`id`, `name`, `description`, `lat`, `lng`, `depth`, `visibility`, `current`, `pathtopicture`, `verified`) VALUES
 (1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).\n\nIl fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.37, -2.35, 47, 'Bonne', 'Moyen', '/image/test.jpg', 1),
-(2, 'Test', 'lelkfjzrejh zrkfrkjru fhkzerjhfskhdfjzehf', 18.00, -2.00, 32, 'Bonne', 'Moyen', '/image/test.jpg', 1);
+(2, 'Test', 'lelkfjzrejh zrkfrkjru fhkzerjhfskhdfjzehf', 18.00, -2.00, 32, 'Bonne', 'Moyen', '/image/test.jpg', 1),
+(3, 'Test proposal', 'Test de soumission de site de plongé', 46.00, -2.00, 43, 'Bonne', 'Fort', '/image/test.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -254,7 +255,8 @@ INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `re
 (1, 'KBEPITECH', 'bridonneau.kevin@gmail.com', NULL, '$2y$10$9o.w/Hu60Zv3APCYr1aBxe2W6lKD9JEUx.CI0PmkUggl0FSWiLen.', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 08:31:04', '2020-08-11 08:31:04'),
 (2, 'Jean Claude', 'test@gmail.com', NULL, '$2y$10$Z8ws/C25wjgdczObB591R.m7wOcvTDsbBeG8rYpbIMzEegr6ctpZG', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 12:28:39', '2020-08-11 12:28:39'),
 (3, 'SCY 85', 'scy85@gmail.com', NULL, '$2y$10$NXZG.9sV18zLJAMD363pwOAlV7Zatv/iqrFXMct1znaLBiiwGlU.u', NULL, 'club', 'La Roche Sur Yon', '0679802428', 'http://www.scy85.fr/', '2020-08-11 12:39:21', '2020-08-11 12:39:21'),
-(4, 'SCPTT', 'scptt@gmail.com', NULL, '$2y$10$FKkHVjScnSgLPpJM7LWyS.mnb1ZSQlm/jJzovm5CC.Iw1VJDQsE3S', NULL, 'club', 'Nantes', '0240512525', 'scptt@org.fr', '2020-08-11 13:03:05', '2020-08-11 13:03:05');
+(4, 'SCPTT', 'scptt@gmail.com', NULL, '$2y$10$FKkHVjScnSgLPpJM7LWyS.mnb1ZSQlm/jJzovm5CC.Iw1VJDQsE3S', NULL, 'club', 'Nantes', '0240512525', 'scptt@org.fr', '2020-08-11 13:03:05', '2020-08-11 13:03:05'),
+(5, 'admin', 'admin@admin.com', NULL, '$2y$10$vCioRAiGDO.GVJP871ZsaeMbtZwFZLuHkmI8Kn7M9Yr/HUwhiJOQ6', NULL, 'admin', NULL, NULL, NULL, '2020-08-12 16:27:07', '2020-08-12 16:27:07');
 
 --
 -- Indexes for dumped tables
@@ -345,7 +347,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `divesites`
 --
 ALTER TABLE `divesites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
@@ -380,7 +382,7 @@ ALTER TABLE `presence`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
