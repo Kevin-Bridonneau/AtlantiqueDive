@@ -39,15 +39,6 @@ services:
         dockerfile: Dockerfile
       depends_on: 
         - db
-    
-    # frontend:
-    #   container_name: vue
-    #   image: node
-    #   working_dir: /app
-    #   user: 1000:1000
-    #   volumes:
-    #     - './frontend:/app'
-    #   command: "npm run serve"
 
     frontend:
       container_name: vue
@@ -58,8 +49,6 @@ services:
           uid: 1000
         context: ./frontend
         dockerfile: Dockerfile
-
-
 
 
 # for launch the container use the command below
