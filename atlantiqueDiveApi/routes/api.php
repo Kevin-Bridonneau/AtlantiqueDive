@@ -40,12 +40,25 @@ Route::get('/presence', 'DiveSitesController@getPresence');
 Route::get('/admin/users', 'AdminController@listUsers');
 Route::get('/admin/user', 'AdminController@getUser');
 Route::post('/admin/updateProfile', 'AdminController@updateProfile');
+Route::post('/admin/createUser', 'AdminController@createUser');
 Route::delete('/admin/user', 'AdminController@deleteUser');
 
 // for proposals
 Route::get('/admin/proposals', 'AdminController@listProposals');
 Route::post('/admin/acceptProposal', 'AdminController@acceptProposal');
 Route::delete('/admin/refuseProposal', 'AdminController@refuseProposal');
+
+//for divesites
+Route::post('/admin/createDiveSite', 'AdminController@createDiveSite');
+Route::post('/admin/updateDiveSite', 'AdminController@updateDiveSite');
+Route::delete('/admin/deleteDiveSite', 'AdminController@deleteDiveSite');
+
+//for notices
+Route::delete('/admin/deleteNotice', 'AdminController@deleteNotice');
+
+//for presence
+Route::delete('/admin/deletePresence', 'AdminController@deletePresence');
+
 
 
 

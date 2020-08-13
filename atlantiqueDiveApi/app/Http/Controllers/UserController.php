@@ -16,7 +16,9 @@ class UserController extends Controller
             $user = Auth::user();
             return response()->json($user);
         }
-        return response()->json('unknown User');
+        return response()->json(array(
+            'Message'   =>  'Invalid credentials'
+        ), 535);
     }
 
 
@@ -32,7 +34,9 @@ class UserController extends Controller
                 'email' => $email,
                 'password' => Hash::make($password),
             ]);
-            return response()->json('user created');
+            return response()->json(array(
+                'Message'   =>  'User created'
+            ), 200);
         }
         elseif($type === "club"){
             $email = $request->only('email')['email'];
@@ -50,18 +54,22 @@ class UserController extends Controller
                 'website' => $website,
                 'password' => Hash::make($password),
             ]);
-            return response()->json('user created');
+            return response()->json(array(
+                'Message'   =>  'User created'
+            ), 200);
         }
-        return response()->json('user not created');
+        return response()->json(array(
+            'Message'   =>  'Unknown type'
+        ), 400);
     }
 
     function update(request $request){
-        if($request->only('type')['type'] === NULL){
+        if(!isset($request->only('type')['type'])){
             return response()->json(array(
                 'message'   =>  "Type not found"
             ), 400);
         }
-        elseif($request->only('id')['id'] === NULL){
+        elseif(!isset($request->only('id')['id'])){
             return response()->json(array(
                 'message'   =>  "id not found"
             ), 400);
@@ -75,28 +83,28 @@ class UserController extends Controller
             ), 400);
         }
         $updateData = [];
-        if($request->only('name')['name'] !== NULL){
+        if(isset($request->only('name')['name'])){
             $name = $request->only('name')['name'];
             $updateData['name'] = $name;
         }
-        if($request->only('email')['email'] !== NULL){
+        if(isset($request->only('email')['email'])){
             $email =$request->only('email')['email'] ;
             $updateData['email'] = $email;
         }
-        if($request->only('password')['password'] !== NULL){
+        if(isset($request->only('password')['password'])){
             $password = $request->only('password')['password'];
             $updateData['password'] = Hash::make($password);
         }
         if($type === "club"){
-            if($request->only('adress')['adress'] !== NULL){
+            if(isset($request->only('adress')['adress'])){
                 $adress = $request->only('adress')['adress'];
                 $updateData['adress'] = $adress;
             }
-            if($request->only('phone')['phone'] !== NULL){
+            if(isset($request->only('phone')['phone'])){
                 $phone = $request->only('phone')['phone'];
                 $updateData['phone'] = $phone;
             }
-            if($request->only('website')['website'] !== NULL){
+            if(isset($request->only('website')['website'])){
                 $website = $request->only('website')['website'];
                 $updateData['$website'] = $website;
             }
@@ -105,6 +113,8 @@ class UserController extends Controller
                     ->where('id', $id)
                     ->update($updateData);
 
-            return response()->json('user updated');
+            return response()->json(array(
+                'Message'   =>  'User updated'
+            ), 200);
     }
 }
