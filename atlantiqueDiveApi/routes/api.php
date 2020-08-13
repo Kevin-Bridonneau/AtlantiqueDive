@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/login', 'UserController@login');
 Route::post('/register', 'UserController@register');
 Route::post('/updateProfile', 'UserController@update');
+//Route::get('/me', 'UserController@me');
 
 // DiveSite route
 Route::post('/divesite', 'DiveSitesController@add');
@@ -35,5 +36,30 @@ Route::get('/presence', 'DiveSitesController@getPresence');
 
 // Admin route
 
-Route::get('/users', 'AdminController@listUser');
+// for user
+Route::get('/admin/users', 'AdminController@listUsers');
+Route::get('/admin/user', 'AdminController@getUser');
+Route::post('/admin/updateProfile', 'AdminController@updateProfile');
+Route::post('/admin/createUser', 'AdminController@createUser');
+Route::delete('/admin/user', 'AdminController@deleteUser');
+
+// for proposals
+Route::get('/admin/proposals', 'AdminController@listProposals');
+Route::post('/admin/acceptProposal', 'AdminController@acceptProposal');
+Route::delete('/admin/refuseProposal', 'AdminController@refuseProposal');
+
+//for divesites
+Route::post('/admin/createDiveSite', 'AdminController@createDiveSite');
+Route::post('/admin/updateDiveSite', 'AdminController@updateDiveSite');
+Route::delete('/admin/deleteDiveSite', 'AdminController@deleteDiveSite');
+
+//for notices
+Route::delete('/admin/deleteNotice', 'AdminController@deleteNotice');
+
+//for presence
+Route::delete('/admin/deletePresence', 'AdminController@deletePresence');
+
+
+
+
 

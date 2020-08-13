@@ -43,12 +43,20 @@ services:
     frontend:
       container_name: vue
       image: node
+<<<<<<< HEAD
       build:
         args:
           user: daegon
           uid: 1000
         context: ./frontend
         dockerfile: Dockerfile
+=======
+      working_dir: /app
+      user: 1000:1000
+      volumes:
+        - './frontend:/app'
+      command: "npm run serve"
+>>>>>>> api
 
 
 # for launch the container use the command below
