@@ -12,23 +12,16 @@ class UserController extends Controller
 {
     function login(request $request){
         $credentials = $request->only('email', 'password');
-
         if (Auth::attempt($credentials)) {
-            
             $user = Auth::user();
             return response()->json($user);
-
         }
-
         return response()->json('unknown User');
-
     }
 
 
     function register(request $request){
-
         $type = $request->only('type')['type'];
-        
         if($type === "plongeur"){
             $email = $request->only('email')['email'];
             $name = $request->only('name')['name'];
@@ -63,7 +56,6 @@ class UserController extends Controller
     }
 
     function update(request $request){
-
         if($request->only('type')['type'] === NULL){
             return response()->json(array(
                 'message'   =>  "Type not found"
@@ -76,15 +68,12 @@ class UserController extends Controller
         }
         $type = $request->only('type')['type'];
         $id = $request->only('id')['id'];
-
         $userData = \DB::table('users')->where('id', $id)->get();
-
         if(count($userData) === 0){
             return response()->json(array(
                 'message'   =>  "user not found"
             ), 400);
         }
-
         $updateData = [];
         if($request->only('name')['name'] !== NULL){
             $name = $request->only('name')['name'];
@@ -117,6 +106,5 @@ class UserController extends Controller
                     ->update($updateData);
 
             return response()->json('user updated');
-
     }
 }
