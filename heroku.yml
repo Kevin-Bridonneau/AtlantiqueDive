@@ -1,6 +1,3 @@
-version: '3.7'
-
-services:
     www:
       container_name: nginx
       image: nginx:alpine
