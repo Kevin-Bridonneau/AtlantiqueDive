@@ -2,7 +2,7 @@
 Website bringing together dive sites in the French Atlantic
 
 # Hosting
-If you want to see the last result go [here](http://3.129.67.228/)
+If you want to see the last release go [here](http://3.129.67.228/)
 
 
 
