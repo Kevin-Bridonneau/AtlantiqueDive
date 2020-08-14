@@ -68,11 +68,7 @@
             },
 
             async refuse(id) {
-                const body = {
-                    id: id
-                }
-                let res = await auth.refuseProposal(body);
-                console.log(res)
+                let res = await auth.refuseProposal(id);
                 res = await auth.listProposal();
                 this.listProposal = res.data.listProposal;
                 res = await auth.getDiveSites();

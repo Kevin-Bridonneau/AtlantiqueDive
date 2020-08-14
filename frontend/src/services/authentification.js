@@ -48,7 +48,7 @@ export default {
     },
 
     refuseProposal(credentials){
-        return api.delete('/api/admin/refuseProposal',credentials)
+        return api.delete('/api/admin/refuseProposal',{params: {'id': credentials } })
     },
 
 }

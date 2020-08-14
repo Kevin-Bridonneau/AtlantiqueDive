@@ -220,7 +220,6 @@ class AdminController extends Controller
     }
 
     function refuseProposal(request $request){
-        return $request;
         if(isset($request->only('id')['id'])){
             $id = $request->only('id')['id'];
             $proposal = \DB::table('divesites')->where('verified', 0 )->where('id', $id)->get();
