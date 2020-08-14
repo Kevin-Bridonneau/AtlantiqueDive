@@ -37,6 +37,18 @@ export default {
 
     addDiveSite(credentials){
         return api.post('/api/divesite',credentials)
-    }
+    },
+
+    listProposal(credentials){
+        return api.get('/api/admin/proposals',credentials)
+    },
+
+    acceptProposal(credentials){
+        return api.post('/api/admin/acceptProposal',credentials)
+    },
+
+    refuseProposal(credentials){
+        return api.delete('/api/admin/refuseProposal',credentials)
+    },
 
 }

@@ -128,7 +128,9 @@
                 this.userData = this.$store.state.userData;
             },
             proposal(){
-                console.log('proposal')
+                this.$router.push({
+                    path: '/admin/listProposal'
+                })
             },
             users(){
                 console.log('users')

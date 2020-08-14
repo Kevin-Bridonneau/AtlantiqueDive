@@ -10,7 +10,8 @@ export default new Vuex.Store({
     // 'Api_Bearer_token': "",
     // 'Api_Refresh_token': "",
     'userData': {},
-    'markers' : []
+    'markers' : [],
+    'key': ""
   },
   plugins: [createPersistedState()],
   mutations: {},
