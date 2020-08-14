@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Hash;
 class AdminController extends Controller
 {
     function listUsers(request $request){
-        $list = \DB::table('users')->get();
+        $list = \DB::table('users')->where('type','!=','admin')->get();
         return response()->json(array(
             'list'   =>  $list
         ), 200);

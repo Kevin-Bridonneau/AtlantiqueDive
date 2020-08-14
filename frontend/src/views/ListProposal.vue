@@ -1,6 +1,6 @@
 <template>
     <div id="listProposal">
-        <div class="card  mb-3 align-item-center d-flex">
+        <div class="card  mb-3 align-item-center d-flex mx-auto" style="width:90%;">
             <h4 type="text" class="card-header text-center">Liste des soumission de site de plongées</h4>
             <div class="card-body overflow-auto mx-auto" style="width:100%;">
                 <div class="row justify-content-between mb-2 mt-2" v-for="proposal in listProposal"

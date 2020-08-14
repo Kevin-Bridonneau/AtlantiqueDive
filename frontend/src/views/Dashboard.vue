@@ -133,10 +133,14 @@
                 })
             },
             users(){
-                console.log('users')
+                this.$router.push({
+                    path: '/admin/listUser'
+                })
             },
             diveSite(){
-                console.log('diveSite')
+                this.$router.push({
+                    path: '/admin/listDiveSite'
+                })
             },
         }
     }

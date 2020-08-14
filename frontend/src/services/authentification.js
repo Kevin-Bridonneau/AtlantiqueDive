@@ -51,4 +51,22 @@ export default {
         return api.delete('/api/admin/refuseProposal',{params: {'id': credentials } })
     },
 
+    listUser(credentials){
+        return api.get('/api/admin/users',credentials)
+    },
+
+    deleteUser(credentials){
+        return api.delete('/api/admin/user',{params: {'id': credentials } })
+    },
+
+    deleteDiveSite(credentials){
+        return api.delete('/api/admin/deleteDiveSite',{params: {'id': credentials } })
+    },
+
+    createUser(credentials){
+        return api.post('/api/admin/createUser',credentials)
+    }
+
+    
+    
 }

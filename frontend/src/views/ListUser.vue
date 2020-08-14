@@ -1,0 +1,65 @@
+<template>
+    <div id="listUser">
+        <div class="card  mb-3 align-item-center d-flex mx-auto" style="width:90%;">
+            <div class="card-header d-flex justify-content-between">
+                <h4>Liste des utilisateurs</h4>
+                <button class="btn btn-warning" @click="createUser">Création Utilisateur</button>
+            </div>
+            <div class="card-body overflow-auto mx-auto" style="width:100%;">
+                <div class="row justify-content-between mb-2 mt-2" v-for="user in listUser" v-bind:key="user.id">
+                    <h5 class="mr-2"> <span style="font-style:italic;"></span> NOM : {{ user.name }}</h5>
+                    <p class="mr-2">Type: {{ user.type }} </p>
+
+                    <button class="btn btn-success mr-2" @click="updateUser(user)">Modifier</button>
+                    <button class="btn btn-danger mr-2" @click="deleteUser(user.id)">Supprimer</button>
+                </div>
+            </div>
+        </div>
+        <div v-if="createButton == true">
+            <CreateUser/>
+        </div>
+    </div>
+</template>
+
+<script>
+    import auth from '@/services/authentification';
+    import CreateUser from '@/components/CreateUser.vue'
+
+    export default {
+        name: 'listUser',
+        components: {
+            CreateUser,
+        },
+        data() {
+            return {
+                listUser: [],
+                createButton: false,
+            }
+        },
+        async mounted() {
+            if (this.$store.state.userData.id === undefined || this.$store.state.userData.type !== "admin") {
+                this.$router.push({
+                    path: '/'
+                })
+            }
+            let res = await auth.listUser();
+            this.listUser = res.data.list;
+        },
+        methods: {
+            async updateUser(user) {
+
+            },
+
+            async deleteUser(id) {
+                let res = await auth.deleteUser(id);
+                res = await auth.listUser();
+                this.listUser = res.data.list;
+            },
+
+            createUser() {
+                this.createButton = true;
+            }
+
+        }
+    }
+</script>

@@ -28,7 +28,7 @@
 <script>
   import auth from '@/services/authentification';
   import navbar from '@/components/Header.vue';
-  import DiveSiteProposal from '@/components/DiveSiteProposal.vue'
+  import DiveSiteProposal from '@/components/DiveSiteProposal.vue';
 
   export default {
     name: 'Home',
