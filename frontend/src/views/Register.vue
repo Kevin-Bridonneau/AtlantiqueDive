@@ -1,7 +1,7 @@
 <template>
     <div id="register">
         <div class="container">
-            <div class="card ">
+            <div class="card mt-3">
                 <div class="card-header">
                     <h1>Inscription</h1>
                 </div>
@@ -9,8 +9,12 @@
                     <div class="row mt-3" v-if="info === true">
                         <span class="text-danger" v-if="msg.general">{{ msg.general }}</span>
                     </div>
+                    <div class="row mt-2">
+                        <label>Selectionner un type d'utilisateur</label>
+                    </div>
                     <div class="row mt-3">
                         <select name="type" v-model="type">
+                            <option value="">--Merci de choisir une option--</option>
                             <option value="plongeur">plongeur</option>
                             <option value="club">club</option>
                         </select>

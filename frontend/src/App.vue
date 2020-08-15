@@ -36,4 +36,10 @@ h3{
 
 }
 
+body{
+  background-image: url("./assets/bg.jpg") ;
+  background-repeat: no-repeat; 
+  background-size: 2000px;
+}
+
 </style>

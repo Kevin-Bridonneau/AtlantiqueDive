@@ -16,7 +16,7 @@
           <h4>Profondeur: {{ diveSiteDepth }}m</h4>
           <h4>Latitude : {{ infowindow.lat }}</h4>
           <h4>Longitude : {{ infowindow.lng }}</h4>
-          <button @click="more">Plus d'infos</button>
+          <button class="btn btn-info" @click="more">Plus d'infos</button>
         </div>
       </gmap-info-window>
     </gmap-map>
