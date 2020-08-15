@@ -2,7 +2,7 @@
   <div id="login">
     <form class="login" @submit.prevent="login">
       <div class="container">
-        <div class="card mt-3">
+        <div class="card mt-3" style="background-color:#f4f4f4e3;">
           <div class="card-header">
             <h1>Connexion</h1>
           </div>

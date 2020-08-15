@@ -1,7 +1,7 @@
 <template>
     <div id="register">
         <div class="container">
-            <div class="card mt-3">
+            <div class="card mt-3" style="background-color:#f4f4f4e3;">
                 <div class="card-header">
                     <h1>Inscription</h1>
                 </div>

@@ -41,5 +41,8 @@ body{
   background-repeat: no-repeat; 
   background-size: 2000px;
 }
+.card-body{
+  background-color: rgba(255, 255, 255, 0);
+}
 
 </style>

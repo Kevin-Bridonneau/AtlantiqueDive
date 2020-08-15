@@ -2,7 +2,7 @@
     <div class="dasboard">
         <div class="container">
             <div v-if="userData.type === 'admin'">
-                <div class="card mt-3">
+                <div class="card mt-3" style="background-color:#f4f4f4e3;">
                     <div class="card-header d-flex justify-content-between">
                         <h5>Management du site</h5>
                         <button type="submit" class="btn btn-danger ml-5" @click="logout()">
@@ -17,7 +17,7 @@
                 </div>
             </div>
             <div v-if="userData.type === 'plongeur'">
-                <div class="card mt-3">
+                <div class="card mt-3" style="background-color:#f4f4f4e3;">
                     <div class="card-header d-flex justify-content-between">
                         <h5>Mon compte</h5>
                         <button type="submit" class="btn btn-danger" @click="logout()">
@@ -77,7 +77,7 @@
                 </div>
             </div>
             <div v-if="userData.type === 'club'">
-                <div class="card mt-3">
+                <div class="card mt-3" style="background-color:#f4f4f4e3;">
                     <div class="card-header d-flex justify-content-between">
                         <h5>Mon compte</h5>
                         <button type="submit" class="btn btn-danger" @click="logout()">
