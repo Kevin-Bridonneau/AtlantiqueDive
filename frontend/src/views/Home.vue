@@ -11,11 +11,13 @@
             height: -35
           }
         }">
-        <h2>{{ diveSiteName }}</h2>
-        <h4>Profondeur: {{ diveSiteDepth }}m</h4>
-        <h4>Latitude : {{ infowindow.lat }}</h4>
-        <h4>Longitude : {{ infowindow.lng }}</h4>
-        <button @click="more">Plus d'infos</button>
+        <div class="container mx-auto">
+          <h2>{{ diveSiteName }}</h2>
+          <h4>Profondeur: {{ diveSiteDepth }}m</h4>
+          <h4>Latitude : {{ infowindow.lat }}</h4>
+          <h4>Longitude : {{ infowindow.lng }}</h4>
+          <button @click="more">Plus d'infos</button>
+        </div>
       </gmap-info-window>
     </gmap-map>
     <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposer un nouveau site de
