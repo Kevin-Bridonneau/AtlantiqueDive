@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 
 services:
     www:
@@ -12,7 +12,6 @@ services:
       depends_on:
         - backend
         - frontend
-        
     db:
       container_name: mariadb
       image: mariadb
@@ -43,20 +42,19 @@ services:
     frontend:
       container_name: vue
       image: node
-<<<<<<< HEAD
       build:
         args:
           user: daegon
           uid: 1000
         context: ./frontend
         dockerfile: Dockerfile
-=======
-      working_dir: /app
-      user: 1000:1000
-      volumes:
-        - './frontend:/app'
-      command: "npm run serve"
->>>>>>> api
+
+
+
+
+
+
+
 
 
 # for launch the container use the command below
