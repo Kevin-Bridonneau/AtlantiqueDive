@@ -1,17 +1,17 @@
 <template>
   <div id="app">
     <div class="navbar">
-      <a class="navbar-brand">
+      <h1 class="navbar-brand">
         Moi je plonge à l'ouest !
-      </a>
-      <div v-if="this.$store.state.userData.name == undefined">
-        <router-link to="/">Home</router-link>
-        <router-link to="/login">Login</router-link>
-        <router-link to="/register">Register</router-link>
+      </h1>
+      <div v-if="this.$store.state.userData.name == undefined" class="d-flex">
+        <router-link to="/"><h3>Home</h3></router-link>
+        <router-link to="/login"><h3>Connexion</h3></router-link>
+        <router-link to="/register"><h3>Inscription</h3></router-link>
       </div>
-      <div v-else>
-        <router-link to="/">Home</router-link>
-        <router-link to="/dashboard">Dashboard</router-link>
+      <div v-else class="d-flex">
+        <router-link to="/"><h3>Home</h3></router-link>
+        <router-link to="/dashboard"><h3>Mon compte</h3></router-link>
       </div>
     </div>
     <router-view />
@@ -19,24 +19,21 @@
 </template>
 
 <style>
-  #app {
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-  }
+.navbar{
+  z-index: 10;
+  position: fixed;
+  background-color: rgba(0, 4, 255, 0.746)!important;
+}
+.navbar-brand{
+  color:white;
+}
+router-link{
+  text-decoration: none;
+}
+h3{
+  color: white;
+  margin: 20px;
 
-  #nav {
-    padding: 30px;
-  }
+}
 
-  #nav a {
-    font-weight: bold;
-    color: #2c3e50;
-  }
-
-  #nav a.router-link-exact-active {
-    color: #42b983;
-  }
 </style>
