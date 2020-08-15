@@ -12,7 +12,6 @@ services:
       depends_on:
         - backend
         - frontend
-        
     db:
       container_name: mariadb
       image: mariadb
@@ -49,7 +48,6 @@ services:
           uid: 1000
         context: ./frontend
         dockerfile: Dockerfile
-
 
 # for launch the container use the command below
 # docker-compose up --build
