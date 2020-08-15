@@ -128,13 +128,19 @@
                 this.userData = this.$store.state.userData;
             },
             proposal(){
-                console.log('proposal')
+                this.$router.push({
+                    path: '/admin/listProposal'
+                })
             },
             users(){
-                console.log('users')
+                this.$router.push({
+                    path: '/admin/listUser'
+                })
             },
             diveSite(){
-                console.log('diveSite')
+                this.$router.push({
+                    path: '/admin/listDiveSite'
+                })
             },
         }
     }

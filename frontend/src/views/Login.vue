@@ -1,13 +1,36 @@
 <template>
   <div id="login">
     <form class="login" @submit.prevent="login">
-      <h1>Sign in</h1>
-      <label>User name</label>
-      <input required v-model="email" type="text" placeholder="Email" />
-      <label>Password</label>
-      <input required v-model="password" type="password" placeholder="Password" />
-      <hr />
-      <button type="submit">Login</button>
+      <div class="container">
+        <div class="card ">
+          <div class="card-header">
+            <h1>Connexion</h1>
+          </div>
+          <div class="card-body mx-auto">
+            <div class="row">
+              <label>Adresse Email</label>
+            </div>
+            <div class="row mt-3">
+              <input required v-model="email" type="text" placeholder="Email" />
+            </div>
+            <div class="row mt-3">
+              <span class="text-danger" v-if="msg.email">{{msg.email}}</span>
+            </div>
+            <div class="row mt-3">
+              <label>Mot de passe</label>
+            </div>
+            <div class="row mt-3">
+              <input required v-model="password" type="password" placeholder="Password" />
+            </div>
+            <div class="row mt-3">
+              <span class="text-danger" v-if="msg.general">{{msg.general}}</span>
+            </div>
+            <div class="row mt-3">
+              <button type="submit" class="btn btn-info">Connexion</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </form>
   </div>
 </template>
@@ -20,23 +43,48 @@
     data() {
       return {
         email: "",
-        password: ""
+        password: "",
+        msg: []
       }
     },
-    async mounted(){
-      if(this.$store.state.userData.id != undefined){
-        this.$router.push({ path: '/home' })
+    async mounted() {
+      if (this.$store.state.userData.id != undefined) {
+        this.$router.push({
+          path: '/home'
+        })
+      }
+    },
+    watch: {
+      email(value) {
+        this.email = value;
+        this.validateEmail(value);
       }
     },
     methods: {
+      validateEmail(value) {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+          this.msg['email'] = '';
+        } else {
+          this.msg['email'] = 'Adresse Email incorecte';
+        }
+      },
       async login() {
-        const body = {
+        let body = {
           email: this.email,
           password: this.password
         }
-        const res = await auth.login(body);
-        this.$store.state.userData = res.data;
-        this.$router.push({ path: '/dashboard' })
+        let requestStatus;
+        let res = await auth.login(body).catch(error => {
+          requestStatus = error.response.status
+        });
+        if (requestStatus === 535) {
+          this.msg['general'] = "Identifiant et/ou mot de passe incorect"
+        } else {
+          this.$store.state.userData = res.data;
+          this.$router.push({
+            path: '/dashboard'
+          })
+        }
       }
     }
   }

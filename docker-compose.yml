@@ -49,13 +49,5 @@ services:
         context: ./frontend
         dockerfile: Dockerfile
 
-
-
-
-
-
-
-
-
 # for launch the container use the command below
 # docker-compose up --build
