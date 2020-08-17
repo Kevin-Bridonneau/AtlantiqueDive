@@ -32,5 +32,8 @@ new Vue({
   router,
   store,
   beforeCreate(){ this.$store.commit('initStore');},
+  created: function (){
+    document.title = 'Moi je plonge à l\'ouest !';
+  },
   render: function (h) { return h(App) }
 }).$mount('#app')
