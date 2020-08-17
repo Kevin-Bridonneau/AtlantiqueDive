@@ -1,26 +1,61 @@
 <template>
   <div id="diveInfo">
-    <h1>Info Site de Plongée</h1>
-    {{ diveData }}
-    <h1>Avis</h1>
-    <div v-for="notice in notices" :key="notice.id">
-          {{ notice }}
-    </div>
-    <div v-if="addNoticeButton === true" >
-      <button @click="addNotice">Donner mon avis</button>
-    </div>
-    <div v-else-if="this.$store.state.userData.type === 'plongeur'">
-      <h5>Vous avez déja donner votre avis sur cette plongée</h5>
-    </div>
-    <h1>Clubs</h1>
-    <div v-for="presence in presences" :key="presence.id">
-          {{ presence }}
-    </div>
-    <div v-if="addPresenceButton === true" >
-      <button @click="addPresence">Mon club propose cette plongée</button>
-    </div>
-    <div v-if="check === true" >
-      <addNotice/>
+    <div class="container">
+      <div class="card mt-3 mb-3" style="background-color:#f4f4f4e3;">
+        <div class="card-header">
+          <h1 class="text-center">{{ diveData.name }}</h1>
+        </div>
+        <div class="card-body">
+          <div class="row mt-2">
+            <h3 style="color:black!important">Description :</h3>
+          </div>
+          <div class="row mt-2">
+            <p>{{ diveData.description }}</p>
+          </div>
+          <div class="row mt-2 justify-content-between">
+            <p>Profondeur: {{ diveData.depth }}m</p>
+            <p>Visibilité: {{ diveData.visibility }}</p>
+            <p>Courrant: {{ diveData.current }}</p>
+            <p>GPS: {{ diveData.position.lat }} LAT | {{ diveData.position.lng }} LON</p>
+          </div>
+          <div class="row mt3 justify-content-between">
+            <div class="card" style="width: 40%">
+              <div class="card-header d-flex justify-content-between">
+                <h5>Avis</h5>
+                <button v-if="addNoticeButton === true" type="submit" class="btn btn-danger ml-5" @click="addNotice">
+                  Donner mon avis
+                </button>
+              </div>
+              <div class="card-body overflow-auto">
+                <div class="row ml-1 mt-1 d-flex justify-content-between" style="border-bottom:1px solid silver;" v-for="notice in notices" :key="notice.id">
+                  <div class="row">
+                    <p><span style="font-weight: bold;"><a :href="`mailto:${notice.email}`"></a>{{ notice.name }}</span>: {{ notice.msg }} <span style="font-size:12px;font-style: italic;">{{ notice.created_at }}</span></p>
+                  </div>
+                  <div class="row mr-1">
+                    <p>Note: {{ notice.rate }}</p>
+                  </div> 
+                </div>    
+              </div>
+            </div>
+            <div class="card" style="width: 40%">
+              <div class="card-header d-flex justify-content-between">
+                <h5>Structures</h5>
+                <button v-if="addPresenceButton === true" type="submit" class="btn btn-danger ml-5" @click="addPresence">
+                  Ma structure propose ce site
+                </button>
+              </div>
+              <div class="card-body overflow-auto">
+                <div class="row mt-2 justify-content-between" style="border-bottom:1px solid silver;" v-for="presence in presences" :key="presence.id">
+                  <p><span style="font-weight: bold;"><a :href="`mailto:${presence.email}`"></a>{{ presence.name }}</span>: {{ presence.phone }} <span style="font-size:12px;font-style: italic;"><a :href="`${presence.website}`">{{ presence.website }}</a></span></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div v-if="check === true">
+        <addNotice />
+      </div>
     </div>
   </div>
 </template>
@@ -31,7 +66,7 @@
   export default {
     name: 'diveInfo',
     props: [
-        'diveData',
+      'diveData',
     ],
     components: {
       AddNotice,
@@ -45,13 +80,15 @@
         addPresenceButton: false,
       }
     },
-    async beforeMount(){
-      if(this.diveData === undefined){
-        this.$router.push({ path: '/' })
+    async beforeMount() {
+      if (this.diveData === undefined) {
+        this.$router.push({
+          path: '/'
+        })
       }
 
       const body = {
-          dive_id : this.diveData.id,
+        dive_id: this.diveData.id,
       }
       //get notices data
       let res = await auth.getNotice(this.diveData.id);
@@ -61,41 +98,39 @@
       res = await auth.getPresence(this.diveData.id);
       this.presences = res.data;
 
-      if(this.$store.state.userData.type === 'plongeur'){
+      if (this.$store.state.userData.type === 'plongeur') {
         this.notices.forEach(notice => {
-          if(notice.user_id !== this.$store.state.userData.id){
-            this.addNoticeButton = true;  
-          }
-          else{
+          if (notice.user_id !== this.$store.state.userData.id) {
+            this.addNoticeButton = true;
+          } else {
             this.addNoticeButton = false
           }
         });
       }
-      if(this.$store.state.userData.type === 'club'){
+      if (this.$store.state.userData.type === 'club') {
         this.presences.forEach(presence => {
-          if(presence.club_id !== this.$store.state.userData.id){
-            this.addPresenceButton = true;  
-          }
-          else{
+          if (presence.club_id !== this.$store.state.userData.id) {
+            this.addPresenceButton = true;
+          } else {
             this.addPresenceButton = false
           }
         });
       }
-      
+
     },
     methods: {
-      async addNotice(){
+      async addNotice() {
         this.check = true;
       },
-      async addPresence(){
+      async addPresence() {
         const body = {
-                    dive_id: this.diveData.id,
-                    club_id: this.$store.state.userData.id
-                }
+          dive_id: this.diveData.id,
+          club_id: this.$store.state.userData.id
+        }
         const res = await auth.addPresence(body);
         this.$router.push({
-                    path: '/home'
-                })
+          path: '/'
+        })
       }
 
     }

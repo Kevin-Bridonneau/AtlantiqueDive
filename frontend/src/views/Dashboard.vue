@@ -354,6 +354,7 @@
                     this.msg['general'] = "Merci de controler votre formulaire";
                 } else {
                     this.userData = this.$store.state.userData;
+                    localStorage.setItem('UserData',JSON.stringify(this.userData));
                     this.msg.general = "Compte mis à jour";
                     this.info = true;
                     this.badRequest = false;
