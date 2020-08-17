@@ -27,26 +27,34 @@
                 </button>
               </div>
               <div class="card-body overflow-auto">
-                <div class="row ml-1 mt-1 d-flex justify-content-between" style="border-bottom:1px solid silver;" v-for="notice in notices" :key="notice.id">
+                <div class="row ml-1 mt-1 d-flex justify-content-between" style="border-bottom:1px solid silver;"
+                  v-for="notice in notices" :key="notice.id">
                   <div class="row">
-                    <p><span style="font-weight: bold;"><a :href="`mailto:${notice.email}`"></a>{{ notice.name }}</span>: {{ notice.msg }} <span style="font-size:12px;font-style: italic;">{{ notice.created_at }}</span></p>
+                    <p><span style="font-weight: bold;"><a
+                          :href="`mailto:${notice.email}`"></a>{{ notice.name }}</span>: {{ notice.msg }} <span
+                        style="font-size:12px;font-style: italic;">{{ notice.created_at }}</span></p>
                   </div>
                   <div class="row mr-1">
                     <p>Note: {{ notice.rate }}</p>
-                  </div> 
-                </div>    
+                  </div>
+                </div>
               </div>
             </div>
             <div class="card" style="width: 40%">
               <div class="card-header d-flex justify-content-between">
                 <h5>Structures</h5>
-                <button v-if="addPresenceButton === true" type="submit" class="btn btn-danger ml-5" @click="addPresence">
+                <button v-if="addPresenceButton === true" type="submit" class="btn btn-danger ml-5"
+                  @click="addPresence">
                   Ma structure propose ce site
                 </button>
               </div>
               <div class="card-body overflow-auto">
-                <div class="row mt-2 justify-content-between" style="border-bottom:1px solid silver;" v-for="presence in presences" :key="presence.id">
-                  <p><span style="font-weight: bold;"><a :href="`mailto:${presence.email}`"></a>{{ presence.name }}</span>: {{ presence.phone }} <span style="font-size:12px;font-style: italic;"><a :href="`${presence.website}`">{{ presence.website }}</a></span></p>
+                <div class="row mt-2 justify-content-between" style="border-bottom:1px solid silver;"
+                  v-for="presence in presences" :key="presence.id">
+                  <p><span style="font-weight: bold;"><a
+                        :href="`mailto:${presence.email}`"></a>{{ presence.name }}</span>: {{ presence.phone }} <span
+                      style="font-size:12px;font-style: italic;"><a
+                        :href="`${presence.website}`">{{ presence.website }}</a></span></p>
                 </div>
               </div>
             </div>
@@ -90,33 +98,39 @@
       const body = {
         dive_id: this.diveData.id,
       }
-      //get notices data
       let res = await auth.getNotice(this.diveData.id);
       this.notices = res.data;
 
-      //get presence data
       res = await auth.getPresence(this.diveData.id);
       this.presences = res.data;
 
       if (this.$store.state.userData.type === 'plongeur') {
-        this.notices.forEach(notice => {
-          if (notice.user_id !== this.$store.state.userData.id) {
-            this.addNoticeButton = true;
-          } else {
-            this.addNoticeButton = false
-          }
-        });
+        if (this.notices.length <= 0) {
+          this.addNoticeButton = true;
+        } else {
+          this.notices.forEach(notice => {
+            if (notice.user_id !== this.$store.state.userData.id) {
+              this.addNoticeButton = true;
+            } else {
+              this.addNoticeButton = false
+            }
+          });
+        }
+
       }
       if (this.$store.state.userData.type === 'club') {
-        this.presences.forEach(presence => {
+        if (this.presences.length <= 0) {
+          this.addPresenceButton = true;;
+        } else {
+          this.presences.forEach(presence => {
           if (presence.club_id !== this.$store.state.userData.id) {
             this.addPresenceButton = true;
           } else {
             this.addPresenceButton = false
-          }
-        });
+            }
+          });
+        }
       }
-
     },
     methods: {
       async addNotice() {

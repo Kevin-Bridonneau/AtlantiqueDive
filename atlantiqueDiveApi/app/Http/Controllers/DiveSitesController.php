@@ -73,7 +73,6 @@ class DiveSitesController extends Controller
         return response()->json('presence added');
     }
 
-
     function getPresence(request $request){
         $dive_id = $request->only('dive_id')['dive_id'];
         $presences  = DB::table('presence')

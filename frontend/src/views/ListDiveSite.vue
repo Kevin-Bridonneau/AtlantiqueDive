@@ -1,6 +1,6 @@
 <template>
     <div id="listDiveSite">
-        <div class="card  mb-3 align-item-center d-flex mx-auto" style="width:90%;background-color:#f4f4f4e3;">
+        <div class="card mt-3 mb-3 align-item-center d-flex mx-auto" style="width:90%;background-color:#f4f4f4e3;">
             <div class="card-header d-flex justify-content-between">
                 <h4>Liste des site de plongée</h4>
                 <button class="btn btn-warning" @click="createDiveSite">Création site de plongée</button>

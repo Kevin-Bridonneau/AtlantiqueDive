@@ -1,6 +1,6 @@
 <template>
     <div id="listUser">
-        <div class="card  mb-3 align-item-center d-flex mx-auto" style="width:90%;background-color:#f4f4f4e3;">
+        <div class="card mt-3 mb-3 align-item-center d-flex mx-auto" style="width:90%;background-color:#f4f4f4e3;">
             <div class="card-header d-flex justify-content-between">
                 <h4>Liste des utilisateurs</h4>
                 <button class="btn btn-warning" @click="createUser">Création Utilisateur</button>
@@ -18,22 +18,29 @@
         <div v-if="createButton == true">
             <CreateUser/>
         </div>
+        <div v-if="updateButton == true">
+            <UpdateUser/>
+        </div>
     </div>
 </template>
 
 <script>
     import auth from '@/services/authentification';
-    import CreateUser from '@/components/CreateUser.vue'
+    import CreateUser from '@/components/CreateUser.vue';
+    import UpdateUser from '@/components/UpdateUser.vue';
 
     export default {
         name: 'listUser',
         components: {
             CreateUser,
+            UpdateUser,
         },
         data() {
             return {
                 listUser: [],
                 createButton: false,
+                updateButton: false,
+                userData: {}
             }
         },
         async mounted() {
@@ -47,7 +54,8 @@
         },
         methods: {
             async updateUser(user) {
-
+                this.userData = user;
+                this.updateButton = true;
             },
 
             async deleteUser(id) {

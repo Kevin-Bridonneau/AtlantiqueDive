@@ -89,7 +89,7 @@
                                 <input type="text" name="website" placeholder="website" v-model="website">
                             </div>
                         </div>
-                        <button class="btn btn-success" @click="submit()">Submit</button>
+                        <button class="btn btn-success mt-2 mb-2" style="width:100%" @click="submit()">Submit</button>
                     </div>
                 </div>
             </div>

@@ -71,7 +71,7 @@
                             <span class="text-danger" v-if="msg.passwordComfirme">{{msg.passwordComfirme}}</span>
                         </div>
                         <div class="row mt-2">
-                            <button class="btn btn-success" @click="update()">Mise à jour</button>
+                            <button class="btn btn-success mt-2 mb-2" style="width:100%" @click="update()">Mise à jour</button>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                             <span class="text-danger" v-if="msg.website">{{msg.website}}</span>
                         </div>
                         <div class="row mt-2">
-                            <button class="btn btn-success" @click="update()">Mise à jour</button>
+                            <button class="btn btn-success mt-2 mb-2" style="width:100%" @click="update()">Mise à jour</button>
                         </div>
                     </div>
                 </div>

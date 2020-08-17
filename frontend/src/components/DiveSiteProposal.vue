@@ -19,7 +19,7 @@
                 <label>Nom du site de plongée</label>
               </div>
               <div class="row mt-2">
-                <input required v-model="name" type="text" placeholder="Nom" />
+                <input style="width:100%" required v-model="name" type="text" placeholder="Nom" />
               </div>
               <div class="row mt-3">
                 <span class="text-danger" v-if="msg.name">{{ msg.name }}</span>
@@ -28,13 +28,13 @@
                 <label>Profondeur (en metres)</label>
               </div>
               <div class="row mt-2">
-                <input required type="number" min="0" name="depth" v-model="depth">
+                <input style="width:100%" required type="number" min="0" name="depth" v-model="depth">
               </div>
               <div class="row mt-2">
                 <label>Description</label>
               </div>
               <div class="row mt-2">
-                <textarea required class="text-info" placeholder="Description" v-model="description"></textarea>
+                <textarea style="width:100%" required class="text-info" placeholder="Description" v-model="description"></textarea>
               </div>
               <div class="row mt-3">
                 <span class="text-danger" v-if="msg.description">{{ msg.description }}</span>
@@ -43,7 +43,7 @@
                 <label>Visivilité</label>
               </div>
               <div class="row mt-2">
-                <select required name="visibility" v-model="visibility">
+                <select style="width:100%" required name="visibility" v-model="visibility">
                   <option value="">--Merci de choisir une option--</option>
                   <option value="Bonne">Bonne</option>
                   <option value="Moyenne">Moyenne</option>
@@ -57,7 +57,7 @@
                 <label>Courant marin</label>
               </div>
               <div class="row mt-2">
-                <select required name="current" v-model="current">
+                <select style="width:100%" required name="current" v-model="current">
                   <option value="">--Merci de choisir une option--</option>
                   <option value="Fort">Fort</option>
                   <option value="Moyen">Moyen</option>
@@ -80,16 +80,16 @@
                 <label>Lattitude</label>
               </div>
               <div class="row mt-2">
-                <input required type="number" step="any" name="lat" v-model="lat">
+                <input style="width:100%" required type="number" step="any" name="lat" v-model="lat">
               </div>
               <div class="row mt-2">
                 <label>Longitude</label>
               </div>
               <div class="row mt-2">
-                <input required type="number" step="any" name="lng" v-model="lng">
+                <input style="width:100%" required type="number" step="any" name="lng" v-model="lng">
               </div>
               <div class="row mt-2">
-                <button type="submit" class="btn btn-info">
+                <button style="width:100%" type="submit" class="btn btn-info">
                   Envoi
                 </button>
               </div>

@@ -65,6 +65,10 @@ export default {
 
     createUser(credentials){
         return api.post('/api/admin/createUser',credentials)
+    },
+
+    updateUser(credentials){
+        return api.post('/api/admin/updateProfile',credentials)
     }
 
     

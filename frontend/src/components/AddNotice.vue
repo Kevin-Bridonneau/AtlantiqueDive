@@ -5,7 +5,10 @@
                 <div class="card  mb-3 align-item-center d-flex"
                     style="max-width: 80%; margin:20px; top:10px;position: absolute; z-index:10">
                     <div class="card-header d-flex justify-content-between">
-                        <h4 type="text" class="card-header text-center">Création d'utilisateur</h4>
+                        <h4>Donner son avis</h4>
+                        <button type="submit" class="btn btn-danger mr-2 ml-5" @click="cancel()">
+                                Annuler
+                        </button>
                     </div>
                         <div class="card-body overflow-auto mx-auto" style="width:100%;">
                             <form @submit.prevent="submit">
@@ -13,7 +16,7 @@
                                     <label>Avis</label>
                                 </div>
                                 <div class="row">
-                                    <textarea required class="text-info" placeholder="Avis" v-model="msg"></textarea>
+                                    <textarea style="width:100%" required class="text-info" placeholder="Avis" v-model="msg"></textarea>
                                 </div>
                                 <div class="row">
                                     <label>Note (sur 5)</label>
@@ -28,14 +31,11 @@
                                     </select>
                                 </div>
                                 <div class="row">
-                                    <button type="submit" class="btn btn-info">
+                                    <button type="submit" style="width:100%" class="btn btn-info">
                                         Envoi
                                     </button>
                                 </div>
                             </form>
-                            <button type="submit" class="btn btn-danger" @click="cancel()">
-                                Annuler
-                            </button>
                         </div>
                     </div>
                 </div>
@@ -68,7 +68,7 @@
                 const res = await auth.addNotice(body);
                 this.$parent.check = false;
                 this.$router.push({
-                    path: '/home'
+                    path: '/'
                 })
             },
             cancel() {

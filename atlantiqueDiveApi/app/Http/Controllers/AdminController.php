@@ -121,7 +121,6 @@ class AdminController extends Controller
     }
 
     function updateProfile(request $request){
-
         if(!isset($request->only('type')['type'])){
             return response()->json(array(
                 'message'   =>  "Type not found"
@@ -167,7 +166,7 @@ class AdminController extends Controller
             }
             if(isset($request->only('website')['website'])){
                 $website = $request->only('website')['website'];
-                $updateData['$website'] = $website;
+                $updateData['website'] = $website;
             }
         }
         if(count($updateData) === 0){

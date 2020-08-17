@@ -21,7 +21,7 @@
             <a class="nav-link" @click="register">Inscription</a>
           </li>
         </div>
-        <div v-else>
+        <div v-else class="d-flex">
           <li class="nav-item mr-2">
             <a class="nav-link" @click="home">Home</a>
           </li>
