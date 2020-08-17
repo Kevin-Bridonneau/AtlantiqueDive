@@ -12,13 +12,7 @@ Vue.use(BootstrapVue);
 Vue.use(VueGoogleMaps, {
   load: {
     key: 'AIzaSyDe0VsXvXs5uB8ph3tw1BnIFsPYBwSWfgQ',
-    libraries: 'places', // This is required if you use the Autocomplete plugin
-    // OR: libraries: 'places,drawing'
-    // OR: libraries: 'places,drawing,visualization'
-    // (as you require)
- 
-    //// If you want to set the version, you can do so:
-    // v: '3.26',
+    libraries: 'places',
   },
  
   //// If you intend to programmatically custom event listener code
@@ -37,5 +31,6 @@ Vue.use(VueGoogleMaps, {
 new Vue({
   router,
   store,
+  beforeCreate(){ this.$store.commit('initStore');},
   render: function (h) { return h(App) }
 }).$mount('#app')

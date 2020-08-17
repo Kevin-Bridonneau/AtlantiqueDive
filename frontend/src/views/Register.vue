@@ -283,6 +283,7 @@
                             }
                             res = await auth.login(body);
                             this.$store.state.userData = res.data;
+                            localStorage.setItem('UserData',JSON.stringify(res.data));
                             this.$router.push({
                                 path: '/dashboard'
                             })
@@ -317,6 +318,7 @@
                             }
                             res = await auth.login(body);
                             this.$store.state.userData = res.data;
+                            localStorage.setItem('UserData',JSON.stringify(res.data));
                             this.$router.push({
                                 path: '/dashboard'
                             })

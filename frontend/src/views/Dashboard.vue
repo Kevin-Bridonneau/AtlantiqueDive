@@ -294,6 +294,7 @@
             logout() {
                 this.userData = {};
                 this.$store.state.userData = {};
+                localStorage.removeItem('UserData');
                 this.$router.push({
                     path: '/'
                 })
