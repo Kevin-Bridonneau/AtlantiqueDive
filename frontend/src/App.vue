@@ -1,48 +1,101 @@
 <template>
   <div id="app">
-    <div class="navbar">
+    <div class="navbar  navbar-expand-lg justify-content-between">
       <h1 class="navbar-brand">
         Moi je plonge à l'ouest !
       </h1>
-      <div v-if="this.$store.state.userData.name == undefined" class="d-flex">
-        <router-link to="/"><h3>Home</h3></router-link>
-        <router-link to="/login"><h3>Connexion</h3></router-link>
-        <router-link to="/register"><h3>Inscription</h3></router-link>
-      </div>
-      <div v-else class="d-flex">
-        <router-link to="/"><h3>Home</h3></router-link>
-        <router-link to="/dashboard"><h3>Mon compte</h3></router-link>
-      </div>
+      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button> -->
+      <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
+      <ul class="navbar-nav">
+        <div v-if="this.$store.state.userData.name == undefined" class="d-flex">
+          <li class="nav-item mr-2">
+            <a class="nav-link" @click="home">Home</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a class="nav-link" @click="connexion">Connexion</a>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link" @click="register">Inscription</a>
+          </li>
+        </div>
+        <div v-else>
+          <li class="nav-item mr-2">
+            <a class="nav-link" @click="home">Home</a>
+          </li>
+          <li class="nav-item mr-2">
+            <a class="nav-link" @click="dashboard">Mon compte</a>
+          </li>
+        </div>
+      </ul>
     </div>
+    <!-- </div> -->
     <router-view />
   </div>
 </template>
 
+<script>
+  export default {
+    methods: {
+      home() {
+        this.$router.push({
+          path: '/'
+        });
+      },
+      connexion() {
+        this.$router.push({
+          path: '/login'
+        });
+      },
+      register() {
+        this.$router.push({
+          path: '/register'
+        });
+      },
+      dashboard() {
+        this.$router.push({
+          path: '/dashboard'
+        });
+      },
+    }
+  }
+</script>
+
+
 <style>
-.navbar{
-  z-index: 10;
-  position: fixed;
-  background-color: rgba(0, 4, 255, 0.746)!important;
-}
-.navbar-brand{
-  color:white;
-}
-router-link{
-  text-decoration: none;
-}
-h3{
-  color: white;
-  margin: 20px;
+  a {
+    color: white !important;
+  }
 
-}
+  .navbar {
+    z-index: 10;
+    position: fixed;
+    background-color: rgba(0, 4, 255, 0.746) !important;
+  }
 
-body{
-  background-image: url("./assets/bg.jpg") ;
-  background-repeat: no-repeat; 
-  background-size: 2000px;
-}
-.card-body{
-  background-color: rgba(255, 255, 255, 0);
-}
+  .navbar-brand {
+    color: white;
+  }
 
+  router-link {
+    text-decoration: none;
+  }
+
+  h3 {
+    color: white;
+    margin: 20px;
+
+  }
+
+  body {
+    background-image: url("./assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 2000px;
+  }
+
+  .card-body {
+    background-color: rgba(255, 255, 255, 0);
+  }
 </style>

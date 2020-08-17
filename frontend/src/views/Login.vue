@@ -50,8 +50,8 @@
     async mounted() {
       if (this.$store.state.userData.id != undefined) {
         this.$router.push({
-          path: '/home'
-        })
+          path: '/'
+        });
       }
     },
     watch: {
