@@ -5,12 +5,12 @@
         <div class="card-header">
           <h1 class="text-center">{{ diveData.name }}</h1>
         </div>
-        <div class="card-body">
+        <div class="card-body justify-content-center">
+          <img style="max-width:100%" :src="getImgUrl(diveData.pathtopicture)" :alt="diveData.name">
           <div class="row mt-2">
             <h3 style="color:black!important">Description :</h3>
           </div>
           <div class="row mt-2 d-flex">
-            <img style="max-width:20%" src="../assets/afrique.jpg" :alt="diveData.name">
             <p >{{ diveData.description }}</p>
           </div>
           <div class="row mt-2 justify-content-between">
@@ -134,6 +134,9 @@
       }
     },
     methods: {
+      getImgUrl(pathtopicture){
+        return "/storage/"+pathtopicture;
+      },
       async addNotice() {
         this.check = true;
       },

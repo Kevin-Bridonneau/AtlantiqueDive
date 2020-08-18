@@ -222,7 +222,7 @@
                         .catch(function () {
                             console.log('FAILURE!!');
                         });
-
+          this.$parent.submissionProposal = true;
           this.$parent.check = false;
         } else {
           this.info = true;

@@ -20,12 +20,31 @@
         </div>
       </gmap-info-window>
     </gmap-map>
-    <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposer un nouveau site de
+    <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposer un nouveau site
+      de
       plongée</button>
     <div v-if="check === true">
       <DiveSiteProposal />
     </div>
-
+    <div v-if="submissionProposal === true">
+      <div id="pop" class="container-flex mx-4   mt-5 fixed-top">
+        <div class="row justify-content-center">
+          <div class="card  mb-3 align-item-center d-flex"
+            style="max-width: 90vw; margin:20px; top:10px;position: absolute; z-index:10">
+            <div class="card-header d-flex justify-content-between">
+              <h4>Attention</h4>
+              <button class="btn btn-danger ml-5" @click="close()">
+                Fermer
+              </button>
+            </div>
+            <div class="card-body text-center">
+              <p>Votre proposition sera analisée par un administrateur et si elle est conforme vous pourez la trouver
+                sur la carte</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -62,7 +81,7 @@
         diveSiteDepth: 0,
         diveData: {},
         user: {},
-
+        submissionProposal: false,
         proposalButton: false
 
       }
@@ -96,6 +115,9 @@
 
     },
     methods: {
+      close(){
+        this.submissionProposal = false;
+      },
       openWindow(diveData) {
         this.infowindow.lat = diveData.position.lat;
         this.infowindow.lng = diveData.position.lng;
@@ -132,5 +154,4 @@
   .btn-grad {
     background-image: linear-gradient(to right, #2BC0E4 0%, #EAECC6 51%, #2BC0E4 100%)
   }
-
 </style>
