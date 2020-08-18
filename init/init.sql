@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 18, 2020 at 10:57 AM
+-- Generation Time: Aug 18, 2020 at 05:48 PM
 -- Server version: 5.7.31-0ubuntu0.18.04.1
 -- PHP Version: 7.2.33-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -44,11 +44,8 @@ CREATE TABLE `divesites` (
 --
 
 INSERT INTO `divesites` (`id`, `name`, `description`, `lat`, `lng`, `depth`, `visibility`, `current`, `pathtopicture`, `verified`) VALUES
-(1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).Il fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.37, -2.35, 47, 'Bonne', 'Moyen', '/image/test.jpg', 1),
-(3, 'Epave du Test update', 'Test de soumission de site de plongé', 46.00, -2.00, 43, 'Bonne', 'Fort', '/image/test.jpg', 1),
-(4, 'Epave du Test admin', 'C\'est une belle epave issu d\'un requete insomnia', 45.00, -2.00, 100, '', '', '', 1),
-(5, 'Nouveau Test de Proposition', 'test test', 44.00, -1.00, 13, 'Bonne', 'Moyen', '/image/test.jpg', 0),
-(16, 'Armor 150', 'Il s’agit d’un ponton de servitude : ponton bigue. C’est un catamaran de la société de travaux maritimes Armor, probablement coulé dans les années 70 alors qu’il était en remorque. Il servait à récupérer et soulever en surface les câbles transatlantiques en vue de leur réparation.Lors de son naufrage, le ponton bigue s’est retourné à une profondeur de 40 45 mètres : exposant ses deux coques lisses réunies par un maillage de poutrelles de liaison. Il est possible de passer en plusieurs endroits sous les coques pour rentrer à l’intérieur. Les deux coques en acier sont liaisonnées par des profilés métalliques.Engin de manutention flottant utilisé dans le levage des colis lourds. La partie levage, montée sur un ponton, est constituée d\'une mâture prolongée d\'une fléchette et de treuils commandant le levage et les mouvements d\'affalement et de relevage de la mâture. Les déplacements en plan sont effectués sur le plan d\'eau par des treuils de papillonnage ou par des propulseurs équipant le ponton. L\'équilibrage au renversement est assuré par ballastage du ponton.La hauteur de levage sous crochet varie, selon les engins entre 20 m et 200 m et suivant l\'inclinaison de la mâture qui fixe la portée.', 46.31, -2.10, 42, 'Bonne', 'Moyen', '/image/test.jpg', 1);
+(1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).Il fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.37, -2.35, 47, 'Bonne', 'Moyen', '/L\' Afrique/l-afrique-1597762601.jpg', 1),
+(16, 'Armor 150', 'Il s’agit d’un ponton de servitude : ponton bigue. C’est un catamaran de la société de travaux maritimes Armor, probablement coulé dans les années 70 alors qu’il était en remorque. Il servait à récupérer et soulever en surface les câbles transatlantiques en vue de leur réparation.Lors de son naufrage, le ponton bigue s’est retourné à une profondeur de 40 45 mètres : exposant ses deux coques lisses réunies par un maillage de poutrelles de liaison. Il est possible de passer en plusieurs endroits sous les coques pour rentrer à l’intérieur. Les deux coques en acier sont liaisonnées par des profilés métalliques.Engin de manutention flottant utilisé dans le levage des colis lourds. La partie levage, montée sur un ponton, est constituée d\'une mâture prolongée d\'une fléchette et de treuils commandant le levage et les mouvements d\'affalement et de relevage de la mâture. Les déplacements en plan sont effectués sur le plan d\'eau par des treuils de papillonnage ou par des propulseurs équipant le ponton. L\'équilibrage au renversement est assuré par ballastage du ponton.La hauteur de levage sous crochet varie, selon les engins entre 20 m et 200 m et suivant l\'inclinaison de la mâture qui fixe la portée.', 46.31, -2.10, 42, 'Bonne', 'Moyen', '/Armor 150/armor-150-1597764412.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -117,7 +114,8 @@ INSERT INTO `notice` (`id`, `dive_id`, `user_id`, `created_at`, `msg`, `rate`) V
 (2, 1, 1, '2020-08-11 12:02:48', 'Un nouveau test', 5),
 (3, 1, 2, '2020-08-17 06:06:57', 'Super Site plein de poisson , visi super !', 4),
 (4, 1, 1, '2020-08-17 13:21:53', 'Super trop cool j\'ai vu des raies .', 4),
-(5, 3, 1, '2020-08-17 13:29:30', 'J\'aime beaucoup les poissons.', 4);
+(5, 3, 1, '2020-08-17 13:29:30', 'J\'aime beaucoup les poissons.', 4),
+(6, 16, 26, '2020-08-18 11:14:46', 'Super', 4);
 
 -- --------------------------------------------------------
 
@@ -360,7 +358,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `divesites`
 --
 ALTER TABLE `divesites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
@@ -375,7 +373,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `notice`
 --
 ALTER TABLE `notice`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `oauth_clients`
 --
