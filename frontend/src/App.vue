@@ -68,6 +68,9 @@
   a {
     color: white !important;
   }
+  a:hover{
+    cursor:  pointer!important;
+  }
 
   .navbar {
     z-index: 10;
