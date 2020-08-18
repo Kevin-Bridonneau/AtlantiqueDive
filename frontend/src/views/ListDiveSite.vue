@@ -8,23 +8,38 @@
             <div class="card-body overflow-auto mx-auto" style="width:100%;">
                 <div class="row justify-content-between mb-2 mt-2" v-for="diveSite in listDiveSite"
                     v-bind:key="diveSite.id">
-                    <h5 class="mr-2"> <span style="font-style:italic;"></span> NOM :  {{ diveSite.name }}</h5>
+                    <h5 class="mr-2"> <span style="font-style:italic;"></span> NOM : {{ diveSite.name }}</h5>
                     <button class="btn btn-success mr-2" @click="updateDiveSite(diveSite)">Modifier</button>
                     <button class="btn btn-danger mr-2" @click="deleteDiveSite(diveSite.id)">Supprimer</button>
                 </div>
             </div>
+        </div>
+        <div v-if="createButton == true">
+            <CreateDiveSite />
+        </div>
+        <div v-if="updateButton == true">
+            <UpdateDiveSite />
         </div>
     </div>
 </template>
 
 <script>
     import auth from '@/services/authentification'
+    import CreateDiveSite from '@/components/CreateDiveSite.vue'
+    import UpdateDiveSite from '@/components/UpdateDiveSite.vue'
 
     export default {
         name: 'listDiveSite',
+        components: {
+            CreateDiveSite,
+            UpdateDiveSite,
+        },
         data() {
             return {
-                listDiveSite: []
+                listDiveSite: [],
+                createButton: false,
+                updateButton: false,
+                diveData: {}
             }
         },
         async mounted() {
@@ -37,11 +52,12 @@
             this.listDiveSite = res.data;
         },
         methods: {
-            async updateDiveSite(diveSite){
-                console.log(diveSite)
+            async updateDiveSite(diveSite) {
+                this.diveData = diveSite;
+                this.updateButton = true;
             },
 
-            async deleteDiveSite(id){
+            async deleteDiveSite(id) {
                 let res = await auth.deleteDiveSite(id);
                 res = await auth.getDiveSites();
                 this.listDiveSite = res.data;
@@ -64,8 +80,8 @@
                 this.$store.state.markers = markers;
             },
 
-            async createDiveSite(){
-                
+            async createDiveSite() {
+                this.createButton = true;
             }
 
         }

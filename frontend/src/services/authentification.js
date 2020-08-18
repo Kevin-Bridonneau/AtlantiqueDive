@@ -69,8 +69,14 @@ export default {
 
     updateUser(credentials){
         return api.post('/api/admin/updateProfile',credentials)
-    }
+    },
 
-    
+    createDiveSite(credentials){
+        return api.post('/api/admin/createDiveSite',credentials)
+    },
+
+    updateDiveSite(credentials){
+        return api.post('/api/admin/updateDiveSite',credentials)
+    }
     
 }

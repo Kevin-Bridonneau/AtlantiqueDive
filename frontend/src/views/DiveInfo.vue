@@ -9,8 +9,9 @@
           <div class="row mt-2">
             <h3 style="color:black!important">Description :</h3>
           </div>
-          <div class="row mt-2">
-            <p>{{ diveData.description }}</p>
+          <div class="row mt-2 d-flex">
+            <img style="max-width:20%" src="../assets/afrique.jpg" :alt="diveData.name">
+            <p >{{ diveData.description }}</p>
           </div>
           <div class="row mt-2 justify-content-between">
             <p>Profondeur: {{ diveData.depth }}m</p>
@@ -19,7 +20,7 @@
             <p>GPS: {{ diveData.position.lat }} LAT | {{ diveData.position.lng }} LON</p>
           </div>
           <div class="row mt3 justify-content-between">
-            <div class="card" style="width: 40%">
+            <div class="card m-2" style="width: 47%">
               <div class="card-header d-flex justify-content-between">
                 <h5>Avis</h5>
                 <button v-if="addNoticeButton === true" type="submit" class="btn btn-danger ml-5" @click="addNotice">
@@ -40,7 +41,7 @@
                 </div>
               </div>
             </div>
-            <div class="card" style="width: 40%">
+            <div class="card m-2" style="width: 47%">
               <div class="card-header d-flex justify-content-between">
                 <h5>Structures</h5>
                 <button v-if="addPresenceButton === true" type="submit" class="btn btn-danger ml-5"

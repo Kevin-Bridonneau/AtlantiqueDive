@@ -200,6 +200,7 @@
             pathToPicture: "/image/test.jpg",
             verified: false
           }
+          let requestStatus;
           const res = await auth.addDiveSite(body).catch(error => {
             requestStatus = error.response.status
           });

@@ -297,31 +297,27 @@ class AdminController extends Controller
             $updateData['name'] = $name;
         }
         if(isset($request->only('description')['description'])){
-            $name = $request->only('description')['description'];
-            $updateData['description'] = $description;
-        }
-        if(isset($request->only('description')['description'])){
-            $name = $request->only('description')['description'];
+            $description = $request->only('description')['description'];
             $updateData['description'] = $description;
         }
         if(isset($request->only('lat')['lat'])){
-            $name = $request->only('lat')['lat'];
+            $lat = $request->only('lat')['lat'];
             $updateData['lat'] = $lat;
         }
         if(isset($request->only('lng')['lng'])){
-            $name = $request->only('lng')['lng'];
+            $lng = $request->only('lng')['lng'];
             $updateData['lng'] = $lng;
         }
         if(isset($request->only('depth')['depth'])){
-            $name = $request->only('depth')['depth'];
+            $depth = $request->only('depth')['depth'];
             $updateData['depth'] = $depth;
         }
         if(isset($request->only('visibility')['visibility'])){
-            $name = $request->only('visibility')['visibility'];
+            $visibility = $request->only('visibility')['visibility'];
             $updateData['visibility'] = $visibility;
         }
         if(isset($request->only('current')['current'])){
-            $name = $request->only('current')['current'];
+            $current = $request->only('current')['current'];
             $updateData['current'] = $current;
         }
         \DB::table('divesites')
