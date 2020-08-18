@@ -69,7 +69,8 @@
                             <label>Photo</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="file" @change="onFileChange">
+                            <input type="file" accept="image/jpeg, image/jpg, image/png, image/gif"
+                                @change="onFileChange">
                         </div>
                         <div class="row mt-2">
                             <label>GPS (exemple : lattitude = 41.65487 )</label>
@@ -100,6 +101,7 @@
 
 <script>
     import auth from '@/services/authentification';
+    import axios from 'axios';
 
     export default {
         name: 'createDiveSite',
@@ -181,27 +183,45 @@
             },
             async onFileChange(event) {
                 this.file = event.target.files[0];
+                console.log(this.file)
             },
             async submit() {
                 if (this.validator.name === true && this.validator.description === true && this.validator
                     .visibility ===
                     true && this.validator.current === true) {
-                    let body = {
-                        name: this.name,
-                        description: this.description,
-                        depth: parseInt(this.depth),
-                        visibility: this.visibility,
-                        current: this.current,
-                        picture: this.picture,
-                        lat: parseFloat(this.lat),
-                        lng: parseFloat(this.lng),
-                        pathToPicture: "/image/test.jpg",
-                        verified: true
-                    }
-                    let res = await auth.createDiveSite(body).catch(error => {
-                        requestStatus = error.response.status
-                    });
-                    res = await auth.getDiveSites();
+                    // let body = {
+                    //     name: this.name,
+                    //     description: this.description,
+                    //     depth: parseInt(this.depth),
+                    //     visibility: this.visibility,
+                    //     current: this.current,
+                    //     lat: parseFloat(this.lat),
+                    //     lng: parseFloat(this.lng),
+                    //     verified: true
+                    // }
+                    let formData = new FormData();
+                    formData.append('pathToPicture', this.file);
+                    formData.append('name', this.name);
+                    formData.append('description', this.description);
+                    formData.append('depth', this.depth);
+                    formData.append('visibility', this.visibility);
+                    formData.append('current', this.current);
+                    formData.append('lat', parseFloat(this.lat));
+                    formData.append('lng', parseFloat(this.lng));
+                    formData.append('verified', 1);
+
+                    axios.post('/api/admin/createDiveSite',
+                            formData,
+                        )
+                        .catch(function () {
+                            console.log('FAILURE!!');
+                        });
+
+                    // let res = await auth.createDiveSite(body).catch(error => {
+                    //     requestStatus = error.response.status
+                    // });
+                //     console.log(res);
+                    let res = await auth.getDiveSites();
                     this.$parent.listDiveSite = res.data;
                     this.$parent.createButton = false;
                 } else {

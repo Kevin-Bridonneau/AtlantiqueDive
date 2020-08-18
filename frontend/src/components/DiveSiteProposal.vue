@@ -103,6 +103,7 @@
 
 <script>
   import auth from '@/services/authentification';
+  import axios from 'axios'
   export default {
     name: 'DiveSiteProposal',
     data() {
@@ -156,7 +157,7 @@
         }
       },
       validateDescription(value) {
-        if (/^[a-zA-Z0-9_]{10,5000}$/.test(value)) {
+        if (/^[a-zA-Z0-9 ,;.!'’çêâéèà@'":€)(-]{10,5000}$/.test(value)) {
           this.msg['description'] = '';
           this.validator['description'] = true;
         } else {
@@ -188,22 +189,40 @@
       async submit() {
         if (this.validator.name === true && this.validator.description === true && this.validator.visibility ===
           true && this.validator.current === true) {
-          let body = {
-            name: this.name,
-            description: this.description,
-            depth: parseInt(this.depth),
-            visibility: this.visibility,
-            current: this.current,
-            picture: this.picture,
-            lat: parseFloat(this.lat),
-            lng: parseFloat(this.lng),
-            pathToPicture: "/image/test.jpg",
-            verified: false
-          }
-          let requestStatus;
-          const res = await auth.addDiveSite(body).catch(error => {
-            requestStatus = error.response.status
-          });
+          // let body = {
+          //   name: this.name,
+          //   description: this.description,
+          //   depth: parseInt(this.depth),
+          //   visibility: this.visibility,
+          //   current: this.current,
+          //   picture: this.picture,
+          //   lat: parseFloat(this.lat),
+          //   lng: parseFloat(this.lng),
+          //   pathToPicture: "/image/test.jpg",
+          //   verified: false
+          // }
+          // let requestStatus;
+          // const res = await auth.addDiveSite(body).catch(error => {
+          //   requestStatus = error.response.status
+          // });
+          let formData = new FormData();
+                    formData.append('pathToPicture', this.file);
+                    formData.append('name', this.name);
+                    formData.append('description', this.description);
+                    formData.append('depth', this.depth);
+                    formData.append('visibility', this.visibility);
+                    formData.append('current', this.current);
+                    formData.append('lat', parseFloat(this.lat));
+                    formData.append('lng', parseFloat(this.lng));
+                    formData.append('verified', 0);
+
+                    axios.post('/api/divesite',
+                            formData,
+                        )
+                        .catch(function () {
+                            console.log('FAILURE!!');
+                        });
+
           this.$parent.check = false;
         } else {
           this.info = true;

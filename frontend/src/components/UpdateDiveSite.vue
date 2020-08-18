@@ -100,7 +100,7 @@
 
 <script>
     import auth from '@/services/authentification';
-
+    import axios from 'axios';
     export default {
         name: 'updateDiveSite',
         data() {
@@ -115,7 +115,8 @@
                 lng: 0,
                 msg: [],
                 validator: [],
-                info: false
+                info: false,
+                checkFile: false
             }
         },
         watch: {
@@ -188,48 +189,63 @@
             },
             async onFileChange(event) {
                 this.file = event.target.files[0];
+                this.checkFile = true;
             },
             async update() {
-                let body = {
-                    id: this.$parent.diveData.id,
-                };
+                // let body = {
+                //     id: this.$parent.diveData.id,
+                // };
+                let formData = new FormData();
+                formData.append('id', this.$parent.diveData.id);
                 if (this.validator['name'] === true && this.name !== this.$parent.diveData.name) {
-                    body.name = this.name;
-                };
-                if (this.validator['description'] === true && this.description !== this.$parent.diveData
-                    .description) {
-                    body.description = this.description;
-                };
-                if (this.depth !== this.$parent.diveData.depth) {
-                    body.depth = this.depth;
-                };
-                if (this.validator['current'] === true && this.current !== this.$parent.diveData.current) {
-                    body.current = this.current;
-                };
-                if (this.validator['visibility'] === true && this.visibility !== this.$parent.diveData.visibility) {
-                    body.visibility = this.visibility;
-                };
-                if (this.lat !== this.$parent.diveData.lat) {
-                    body.lat = this.lat;
-                };
-                if (this.lng !== this.$parent.diveData.lng) {
-                    body.lng = this.lng;
-                };
-                // RAF gestion image
-                if(!Object.keys(body).length){
-                    this.info = true;
-                    this.msg['general'] = "Aucun changement effectué";
+                    formData.append('name', this.name);
                 }
                 else{
+                    formData.append('name', this.$parent.diveData.name);
+                }
+                if (this.validator['description'] === true && this.description !== this.$parent.diveData
+                    .description) {
+                    formData.append('description', this.description);
+                };
+                if (this.depth !== this.$parent.diveData.depth) {
+                    formData.append('depth', this.depth);
+                };
+                if (this.validator['current'] === true && this.current !== this.$parent.diveData.current) {
+                    formData.append('current', this.current);
+                };
+                if (this.validator['visibility'] === true && this.visibility !== this.$parent.diveData.visibility) {
+                    formData.append('visibility', this.visibility);
+                };
+                if (this.lat !== this.$parent.diveData.lat) {
+                    formData.append('lat', parseFloat(this.lat));
+                };
+                if (this.lng !== this.$parent.diveData.lng) {
+                    formData.append('lng', parseFloat(this.lng));
+                };
+                if (this.checkFile === true) {
+                    formData.append('pathToPicture', this.file);
+                };
+                // if(!Object.keys(formData).length){
+                //     this.info = true;
+                //     this.msg['general'] = "Aucun changement effectué";
+                // }
+                // else{
                     this.info = false;
-                    let requestStatus;
-                    let res = await auth.updateDiveSite(body).catch(error => {
-                        requestStatus = error.response.status
-                    });
-                    res = await auth.getDiveSites();
+                    axios.post('/api/admin/updateDiveSite',
+                            formData,
+                        )
+                        .catch(function () {
+                            console.log('FAILURE!!');
+                        });
+                    // let requestStatus;
+
+                    // let res = await auth.updateDiveSite(body).catch(error => {
+                    //     requestStatus = error.response.status
+                    // });
+                    let res = await auth.getDiveSites();
                     this.$parent.listDiveSite = res.data;
                     this.$parent.updateButton = false;
-                }
+                // }
 
 
             },

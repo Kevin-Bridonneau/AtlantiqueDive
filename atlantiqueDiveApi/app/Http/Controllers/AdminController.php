@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class AdminController extends Controller
 {
@@ -253,25 +254,28 @@ class AdminController extends Controller
         $lat = $request->only('lat')['lat'];
         $lng = $request->only('lng')['lng'];
         $verified = $request->only('verified')['verified'];
-
-        if(isset($request->only('visibility')['visibility'])){
+        
+        if($request->only('visibility')['visibility']) {
             $visibility = $request->only('visibility')['visibility'];
         }
         else $visibility = "";
-
-        if(isset($request->only('current')['current'])){
+        if($request->only('current')['current']){
             $current = $request->only('current')['current'];
         }
         else $current = "";
-
-        if(isset($request->only('pathToPicture')['pathToPicture'])){
-            $pathToPicture = $request->only('pathToPicture')['pathToPicture'];
+        if($request->file('pathToPicture')){
+            $img = $request->file('pathToPicture');
+            $imgName = Str::slug($name .'_'.time());
+            $folder = '/'.$name;
+            $filePath = $imgName. '.' . $img->getClientOriginalExtension();
+            $fullPath = $folder.'/'.$filePath;
+            $img->storeAs($folder, $filePath, 'public');
         }
         else $pathToPicture = "";
         
         \DB::insert('insert into divesites (name, description, depth, visibility, current, pathtopicture, lat, lng,verified)
          values (?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-         [$name, $description, $depth, $visibility, $current, $pathToPicture, $lat, $lng,$verified]);
+         [$name, $description, $depth, $visibility, $current, $fullPath, $lat, $lng,$verified]);
         
         return response()->json(array(
             'Message'   =>  'Dive site created'
@@ -320,6 +324,16 @@ class AdminController extends Controller
             $current = $request->only('current')['current'];
             $updateData['current'] = $current;
         }
+        if($request->file('pathToPicture')){
+            $img = $request->file('pathToPicture');
+            $imgName = Str::slug($name .'_'.time());
+            $folder = '/'.$name;
+            $filePath = $imgName. '.' . $img->getClientOriginalExtension();
+            $fullPath = $folder.'/'.$filePath;
+            $img->storeAs($folder, $filePath, 'public');
+            $updateData['pathToPicture'] = $fullPath;
+        }
+
         \DB::table('divesites')
                     ->where('id', $id)
                     ->update($updateData);
