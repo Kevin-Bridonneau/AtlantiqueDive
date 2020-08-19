@@ -42,7 +42,7 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
       <div class="row m-1 mt-5 mb-5 p-3" style="width:100%; background-color:white; border-radius: 25px;-webkit-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
-        <h1 class="text text-center" style="width:100%">Êtes-vous un club ou une structure privée?</h1>
+        <h1 class="text text-center mt-2" style="width:100%">Êtes-vous un club ou une structure privée?</h1>
         <p class="text text-center" style="width:100%">Connecté vous et ajouter vos coordonée sur les différents site de plongées pour devenir plus visible aux clients potentiels !</p>
       </div>
     </div>
