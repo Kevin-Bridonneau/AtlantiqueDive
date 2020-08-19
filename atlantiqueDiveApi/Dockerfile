@@ -47,6 +47,4 @@ RUN php artisan config:cache
 
 RUN php artisan key:generate
 
-RUN php artisan storage:link
-
 CMD php artisan serve --host=0.0.0.0 --port=8000
