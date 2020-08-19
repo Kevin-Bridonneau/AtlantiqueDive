@@ -65,7 +65,13 @@
 
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+  body{
+    font-family: 'Roboto', sans-serif;
+  }
   a {
+    font-family: 'Roboto', sans-serif;
     color: white !important;
   }
   a:hover{
@@ -73,12 +79,14 @@
   }
 
   .navbar {
+    font-family: 'Roboto', sans-serif;
     z-index: 10;
     position: fixed;
     background-color: rgba(0, 4, 255, 0.746) !important;
   }
 
   .navbar-brand {
+    font-family: 'Roboto', sans-serif;
     color: white;
   }
 
@@ -87,18 +95,21 @@
   }
 
   h3 {
+    font-family: 'Roboto', sans-serif;
     color: white;
     margin: 20px;
 
   }
 
   body {
+    font-family: 'Roboto', sans-serif;
     background-image: url("./assets/bg.jpg");
     background-repeat: no-repeat;
     background-size: 2000px;
   }
 
   .card-body {
+    font-family: 'Roboto', sans-serif;
     background-color: rgba(255, 255, 255, 0);
   }
 </style>
