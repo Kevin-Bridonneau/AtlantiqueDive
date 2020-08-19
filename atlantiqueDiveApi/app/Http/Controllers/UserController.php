@@ -7,13 +7,25 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     function login(request $request){
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+
+            $token = Str::random(60);
             $user = Auth::user();
+            $id = $user->id;
+            \DB::table('users')
+                    ->where('id', $id)
+                    ->update(['remember_token' => $token]);
+
+            $user = \DB::table('users')
+                    ->where('id', $id)
+                    ->get();
+
             return response()->json($user);
         }
         return response()->json(array(

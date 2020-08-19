@@ -6,7 +6,8 @@
           <h1 class="text-center">{{ diveData.name }}</h1>
         </div>
         <div class="card-body justify-content-center">
-          <img style="max-width:100%" :src="getImgUrl(diveData.pathtopicture)" :alt="diveData.name">
+          <div id="diveImg" style="max-width:100%" >
+          </div>
           <div class="row mt-2">
             <h3 style="color:black!important">Description :</h3>
           </div>
@@ -82,6 +83,7 @@
     },
     data() {
       return {
+        img:"data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7",
         notices: [],
         presences: [],
         check: false,
@@ -95,12 +97,27 @@
           path: '/'
         })
       }
-
       const body = {
         dive_id: this.diveData.id,
       }
+      let blob;
+      let data;
+      await auth.getDiveImg(body).then((res) => blob = res.data)
+      .catch(err => console.log(err));
+      this.img = data;
+      var image = document.createElement('img');
+      let reader=new FileReader();
+      reader.addEventListener('loadend',()=>{
+        let contents=reader.result
+        image.src = contents
+        let selector = document.querySelector('#diveImg');
+        selector.appendChild(image);
+      })
+      if(blob instanceof Blob) reader.readAsDataURL(blob)
+
       let res = await auth.getNotice(this.diveData.id);
       this.notices = res.data;
+
 
       res = await auth.getPresence(this.diveData.id);
       this.presences = res.data;
@@ -134,8 +151,8 @@
       }
     },
     methods: {
-      getImgUrl(pathtopicture){
-        return "/storage/"+pathtopicture;
+      getImg(){
+        return this.img;
       },
       async addNotice() {
         this.check = true;

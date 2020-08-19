@@ -34,6 +34,8 @@ Route::get('/notice', 'DiveSitesController@getNotice');
 Route::post('/presence', 'DiveSitesController@addPresence');
 Route::get('/presence', 'DiveSitesController@getPresence');
 
+Route::post('/diveSiteImg','DiveSitesController@getImg');
+
 // Admin route
 
 // for user
@@ -58,6 +60,7 @@ Route::delete('/admin/deleteNotice', 'AdminController@deleteNotice');
 
 //for presence
 Route::delete('/admin/deletePresence', 'AdminController@deletePresence');
+
 
 
 

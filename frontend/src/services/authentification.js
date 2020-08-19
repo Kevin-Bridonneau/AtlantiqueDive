@@ -52,7 +52,7 @@ export default {
     },
 
     listUser(credentials){
-        return api.get('/api/admin/users',credentials)
+        return api.get('/api/admin/users',{headers: {'id': credentials.id, 'token': credentials.token } })
     },
 
     deleteUser(credentials){
@@ -77,6 +77,10 @@ export default {
 
     updateDiveSite(credentials){
         return api.post('/api/admin/updateDiveSite',credentials)
+    },
+
+    getDiveImg(credentials){
+        return api.post('/api/diveSiteImg',credentials , { responseType: 'blob'})
     }
     
 }

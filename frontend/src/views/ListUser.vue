@@ -49,7 +49,13 @@
                     path: '/'
                 })
             }
-            let res = await auth.listUser();
+            let token = this.$store.state.userData.remember_token
+            let id = this.$store.state.userData.id
+            let body = {
+                id: id,
+                token: token
+            }
+            let res = await auth.listUser(body);
             this.listUser = res.data.list;
         },
         methods: {

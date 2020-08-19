@@ -12,10 +12,28 @@ use Illuminate\Support\Str;
 class AdminController extends Controller
 {
     function listUsers(request $request){
-        $list = \DB::table('users')->where('type','!=','admin')->get();
+        if($request->header('token') && $request->header('id')){
+            $token = $request->header('token');
+            $id = $request->header('id');
+            $user = \DB::table('users')
+                    ->where('remember_token',$token)        
+                    ->where('id', $id)
+                    ->first();
+            if(!isset($user->type)){
+                return response()->json(array(
+                    'Message'   =>  'Unauthorized access to the requested resource'
+                ), 400);
+            }
+            if($user->type === 'admin'){
+                $list = \DB::table('users')->where('type','!=','admin')->get();
+                return response()->json(array(
+                    'list'   =>  $list
+                ), 200);
+            }
+        }
         return response()->json(array(
-            'list'   =>  $list
-        ), 200);
+            'Message'   =>  'Unauthorized access to the requested resource'
+        ), 400);
     }
 
     function getUser(request $request){

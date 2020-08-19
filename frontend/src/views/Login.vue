@@ -80,8 +80,8 @@
         if (requestStatus === 535) {
           this.msg['general'] = "Identifiant et/ou mot de passe incorect"
         } else {
-          this.$store.state.userData = res.data;
-          localStorage.setItem('UserData',JSON.stringify(res.data));
+          this.$store.state.userData = res.data[0];
+          localStorage.setItem('UserData',JSON.stringify(res.data[0]));
           this.$router.push({
             path: '/dashboard'
           })

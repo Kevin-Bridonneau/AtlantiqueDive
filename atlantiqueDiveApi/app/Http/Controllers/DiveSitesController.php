@@ -109,4 +109,10 @@ class DiveSitesController extends Controller
         return response()->json($presences);
     }
 
+    function getImg(request $request){
+        $dive_id = $request->only('dive_id')['dive_id'];
+        $datas = DB::table('divesites')->select('pathToPicture')->where('id', $dive_id )->first();
+        $url = Storage::url($datas->pathToPicture);
+        return response()->download('storage/'.$datas->pathToPicture); 
+    }
 }

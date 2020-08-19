@@ -282,8 +282,8 @@
                                 password: this.password
                             }
                             res = await auth.login(body);
-                            this.$store.state.userData = res.data;
-                            localStorage.setItem('UserData',JSON.stringify(res.data));
+                            this.$store.state.userData = res.data[0];
+                            localStorage.setItem('UserData',JSON.stringify(res.data[0]));
                             this.$router.push({
                                 path: '/dashboard'
                             })
@@ -317,8 +317,8 @@
                                 password: this.password
                             }
                             res = await auth.login(body);
-                            this.$store.state.userData = res.data;
-                            localStorage.setItem('UserData',JSON.stringify(res.data));
+                            this.$store.state.userData = res.data[0];
+                            localStorage.setItem('UserData',JSON.stringify(res.data[0]));
                             this.$router.push({
                                 path: '/dashboard'
                             })
