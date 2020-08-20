@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 Vue.use(BootstrapVue);
 Vue.use(VueGoogleMaps, {
   load: {
-    key: 'AIzaSyBpMbmhwY71ovxWNFZ_yj8JABlWP2RgpBk',
+    key: 'PUT YOUR API KEY HERE',
     libraries: 'places',
   },
 });
