@@ -3,17 +3,34 @@
         <div class="card mt-3  mb-3 align-item-center d-flex mx-auto" style="width:90%;background-color:#f4f4f4e3;">
             <h4 type="text" class="card-header text-center">Liste des soumission de site de plongées</h4>
             <div class="card-body overflow-auto mx-auto" style="width:100%;">
-                <div class="row justify-content-between mb-2 mt-2" v-for="proposal in listProposal"
+                <div v-if="nothing === true">
+                    <h5 class="text text-center text-info">Aucune proposition actuellement</h5>
+                </div>
+                <div class="row mb-2 mt-2" style="width:100%;border-bottom:1px solid silver" v-for="proposal in listProposal"
                     v-bind:key="proposal.id">
-                    <h5 class="mr-2"> <span style="font-style:italic;"></span> NOM :{{ proposal.name }}</h5>
-                    <p class="mr-2">Description : {{ proposal.description }}</p>
-                    <p class="mr-2">GPS : lat:{{ proposal.lat }}| Lng:{{ proposal.lng }}</p>
-                    <p class="mr-2">Profondeur : {{ proposal.depth }}m</p>
-                    <p class="mr-2">Current : {{ proposal.current }}</p>
-                    <p class="mr-2">Visibility : {{ proposal.visibility }}</p>
-                    <p class="mr-2">Photo : {{ proposal.pathtopicture }}</p>
-                    <button class="btn btn-success mr-2" @click="accept(proposal.id)">Valider</button>
-                    <button class="btn btn-danger mr-2" @click="refuse(proposal.id)">Refuser</button>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <h5 class="m-2"> <span style="font-style:italic;"></span> NOM :{{ proposal.name }}</h5>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">Description : {{ proposal.description }}</p>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">GPS : lat:{{ proposal.lat }}| Lng:{{ proposal.lng }}</p>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">Profondeur : {{ proposal.depth }}m</p>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">Current : {{ proposal.current }}</p>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">Visibility : {{ proposal.visibility }}</p>
+                    </div>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <p class="m-2">Photo : {{ proposal.pathtopicture }}</p>
+                    </div>               
+                    <button class="btn btn-success m-2" @click="accept(proposal.id)">Valider</button>
+                    <button class="btn btn-danger m-2" @click="refuse(proposal.id)">Refuser</button>
                 </div>
             </div>
         </div>
@@ -27,7 +44,8 @@
         name: 'listProposal',
         data() {
             return {
-                listProposal: []
+                listProposal: [],
+                nothing:false
             }
         },
         async mounted() {
@@ -38,6 +56,9 @@
             }
             const res = await auth.listProposal();
             this.listProposal = res.data.listProposal;
+            if(this.listProposal === undefined){
+                this.nothing = true;
+            }
         },
         methods: {
             async accept(id) {
@@ -47,6 +68,9 @@
                 let res = await auth.acceptProposal(body);
                 res = await auth.listProposal();
                 this.listProposal = res.data.listProposal;
+                if(this.listProposal === undefined){
+                this.nothing = true;
+                }
                 res = await auth.getDiveSites();
                 let markers = [];
                 res.data.forEach(site => {

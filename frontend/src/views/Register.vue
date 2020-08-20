@@ -10,7 +10,7 @@
                         <span class="text-danger" v-if="msg.general">{{ msg.general }}</span>
                     </div>
                     <div class="row mt-2">
-                        <label>Selectionner un type d'utilisateur</label>
+                        <label>Sélectionnez un type d'utilisateur</label>
                     </div>
                     <div class="row mt-3">
                         <select name="type" v-model="type">
@@ -24,7 +24,7 @@
                             <label>Nom</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="text" name="name" required placeholder="name" v-model="name">
+                            <input type="text" name="name" required placeholder="nom" v-model="name">
                         </div>
                         <div class="row mt-3">
                             <span class="text-danger" v-if="msg.name">{{msg.name}}</span>
@@ -39,7 +39,7 @@
                             <span class="text-danger" v-if="msg.email">{{msg.email}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password</label>
+                            <label>Mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="password" required v-model="password">
@@ -48,7 +48,7 @@
                             <span class="text-danger" v-if="msg.password">{{msg.password}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password Comfirmation</label>
+                            <label>Confirmation du mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="passwordComfirme" required v-model="passwordComfirme">
@@ -62,7 +62,7 @@
                             <label>Nom du club</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="text" name="name" placeholder="name" required v-model="name">
+                            <input type="text" name="name" placeholder="nom" required v-model="name">
                         </div>
                         <div class="row mt-3">
                             <span class="text-danger" v-if="msg.name">{{msg.name}}</span>
@@ -77,7 +77,7 @@
                             <span class="text-danger" v-if="msg.email">{{msg.email}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password</label>
+                            <label>Mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="password" required v-model="password">
@@ -86,7 +86,7 @@
                             <span class="text-danger" v-if="msg.password">{{msg.password}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password Comfirmation</label>
+                            <label>Confirmation du mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="passwordComfirme" required v-model="passwordComfirme">
@@ -98,7 +98,7 @@
                             <label>Adresse du club (ville)</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="text" name="adress" placeholder="adress" required v-model="adress">
+                            <input type="text" name="adress" placeholder="adresse" required v-model="adress">
                         </div>
                         <div class="row mt-3">
                             <span class="text-danger" v-if="msg.adress">{{msg.adress}}</span>
@@ -107,7 +107,7 @@
                             <label>Telephone</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="text" name="phone" placeholder="phone" required v-model="phone">
+                            <input type="text" name="phone" placeholder="téléphone" required v-model="phone">
                         </div>
                         <div class="row mt-3">
                             <span class="text-danger" v-if="msg.phone">{{msg.phone}}</span>
@@ -116,7 +116,7 @@
                             <label>Site internet</label>
                         </div>
                         <div class="row mt-2">
-                            <input type="text" name="website" placeholder="website" required v-model="website">
+                            <input type="text" name="website" placeholder="Site internet" required v-model="website">
                         </div>
                         <div class="row mt-3">
                             <span class="text-danger" v-if="msg.website">{{msg.website}}</span>

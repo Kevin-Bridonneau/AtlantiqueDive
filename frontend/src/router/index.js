@@ -53,6 +53,12 @@ Vue.use(VueRouter)
     name: 'listDiveSite',
     component: ListDiveSite
   },
+  {
+    path: '*',
+    redirect: to => {
+      return '/';
+    },
+  },
 ]
 
 const router = new VueRouter({

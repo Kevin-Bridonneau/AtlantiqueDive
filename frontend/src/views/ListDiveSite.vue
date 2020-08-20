@@ -6,11 +6,13 @@
                 <button class="btn btn-warning" @click="createDiveSite">Création site de plongée</button>
             </div>
             <div class="card-body overflow-auto mx-auto" style="width:100%;">
-                <div class="row justify-content-between mb-2 mt-2" v-for="diveSite in listDiveSite"
+                <div class="row mb-2 mt-2" style="width:100%;border-bottom:1px solid silver" v-for="diveSite in listDiveSite"
                     v-bind:key="diveSite.id">
-                    <h5 class="mr-2"> <span style="font-style:italic;"></span> NOM : {{ diveSite.name }}</h5>
-                    <button class="btn btn-success mr-2" @click="updateDiveSite(diveSite)">Modifier</button>
-                    <button class="btn btn-danger mr-2" @click="deleteDiveSite(diveSite.id)">Supprimer</button>
+                    <div class="row m-3 d-flex justify-content-between" style="width:100%;">
+                        <h5 class="m-3"> <span style="font-style:italic;"></span> NOM : {{ diveSite.name }}</h5>
+                    </div>
+                    <button class="btn btn-success m-2" @click="updateDiveSite(diveSite)">Modifier</button>
+                    <button class="btn btn-danger m-2" @click="deleteDiveSite(diveSite.id)">Supprimer</button>
                 </div>
             </div>
         </div>

@@ -27,7 +27,7 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
                 <span class="text-danger" v-if="msg.name">{{ msg.name }}</span>
               </div>
               <div class="row mt-2">
-                <label>Profondeur (en metres)</label>
+                <label>Profondeur (en mètres)</label>
               </div>
               <div class="row mt-2">
                 <input style="width:100%" required type="number" min="0" name="depth" v-model="depth">
@@ -42,7 +42,7 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
                 <span class="text-danger" v-if="msg.description">{{ msg.description }}</span>
               </div>
               <div class="row mt-2">
-                <label>Visivilité</label>
+                <label>Visibilité</label>
               </div>
               <div class="row mt-2">
                 <select style="width:100%" required name="visibility" v-model="visibility">

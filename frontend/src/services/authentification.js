@@ -39,8 +39,8 @@ export default {
         return api.post('/api/divesite',credentials)
     },
 
-    listProposal(credentials){
-        return api.get('/api/admin/proposals',credentials)
+    listProposal(){
+        return api.get('/api/admin/proposals')
     },
 
     acceptProposal(credentials){

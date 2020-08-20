@@ -9,10 +9,16 @@
                             Déconnexion
                         </button>
                     </div>
-                    <div class="card-body d-flex justify-content-between">
-                        <a @click="proposal()" class="btn btn-info">Soumission de site de plongée</a>
-                        <a @click="users()" class="btn btn-info">Utilisateurs</a>
-                        <a @click="diveSite()" class="btn btn-info">Sites de plongée</a>
+                    <div class="card-body mx-auto" style="width:100%">
+                        <div class="row" style="width:100%">
+                            <a @click="proposal()" class="btn btn-info mt-3" style="width:100%">Soumission de site de plongée</a>
+                        </div>
+                        <div class="row" style="width:100%">
+                            <a @click="users()" class="btn btn-primary mt-3" style="width:100%">Utilisateurs</a>
+                        </div>
+                        <div class="row" style="width:100%">
+                            <a @click="diveSite()" class="btn btn-success mt-3" style="width:100%">Sites de plongée</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -53,7 +59,7 @@
                             <span class="text-danger" v-if="msg.email">{{msg.email}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password</label>
+                            <label>Mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="password" v-model="password">
@@ -62,7 +68,7 @@
                             <span class="text-danger" v-if="msg.password">{{msg.password}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password Comfirmation</label>
+                            <label>Confirmation du mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="passwordComfirme" v-model="passwordComfirme">
@@ -113,7 +119,7 @@
                             <span class="text-danger" v-if="msg.email">{{msg.email}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password</label>
+                            <label>Mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="password" v-model="password">
@@ -122,7 +128,7 @@
                             <span class="text-danger" v-if="msg.password">{{msg.password}}</span>
                         </div>
                         <div class="row mt-2">
-                            <label>Password Comfirmation</label>
+                            <label>Confirmation du mot de passe</label>
                         </div>
                         <div class="row mt-2">
                             <input type="password" name="passwordComfirme" v-model="passwordComfirme">

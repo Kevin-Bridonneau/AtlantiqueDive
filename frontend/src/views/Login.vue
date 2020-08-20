@@ -20,7 +20,7 @@
               <label>Mot de passe</label>
             </div>
             <div class="row mt-3">
-              <input required v-model="password" type="password" placeholder="Password" />
+              <input required v-model="password" type="password" />
             </div>
             <div class="row mt-3">
               <span class="text-danger" v-if="msg.general">{{msg.general}}</span>
