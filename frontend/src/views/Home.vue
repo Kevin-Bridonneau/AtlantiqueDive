@@ -30,7 +30,7 @@
       </gmap-marker>
       </div>
     </gmap-map>
-    <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposer un nouveau site
+    <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposez un nouveau site
       de
       plongée</button>
     <div v-if="check === true">
@@ -41,22 +41,22 @@
 -moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
         <h1 class="text text-center" style="width:100%">Êtes-vous un plongeur?</h1>
-        <h3 class="text text-center" style="width:100%;color:#003045;">Explorer les sites de plongée</h3>
-        <p class="text text-center" style="width:100%">Utiliser notre carte pour découvrir les sites de plongée en
+        <h3 class="text text-center" style="width:100%;color:#003045;">Explorez les sites de plongée</h3>
+        <p class="text text-center" style="width:100%">Utilisez notre carte pour découvrir les sites de plongée en
           atlantique, vous y retrouverez toute les infos
-          nécessaire pour vous y rendre ainsi que les coordonées des club proposant des sortie sur place !</p>
-        <h3 class="text text-center" style="width:100%;color:#003045;">Vous connaisser déjà un site de plongée?</h3>
-        <p class="text text-center" style="width:100%">Connecté vous et donnez votre avis sur le site (espèces
+          nécessaires pour vous y rendre ainsi que les coordonées des clubs proposant des sorties sur place !</p>
+        <h3 class="text text-center" style="width:100%;color:#003045;">Vous connaissez déjà un site de plongée?</h3>
+        <p class="text text-center" style="width:100%">Connectez vous et donnez votre avis sur le site (espèces
           présentes, accéssibilité etc)</p>
-        <h3 class="text text-center" style="width:100%;color:#003045;">Vous ne trouver pas un site de plongée?</h3>
-        <p class="text text-center" style="width:100%">Connecté vous et proposé un site qui sera rapidement validé et
+        <h3 class="text text-center" style="width:100%;color:#003045;">Vous ne trouvez pas un site de plongée?</h3>
+        <p class="text text-center" style="width:100%">Connectez vous et proposez un site qui sera rapidement validé et
           placé sur la carte par nos experts !</p>
       </div>
       <div class="row m-1 mt-5 mb-5 p-3" style="width:100%; background-color:white; border-radius: 25px;-webkit-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
         <h1 class="text text-center mt-2" style="width:100%">Êtes-vous un club ou une structure privée?</h1>
-        <p class="text text-center" style="width:100%">Connecté vous et ajouter vos coordonée sur les différents site de
+        <p class="text text-center" style="width:100%">Connectez vous et ajoutez vos coordonées sur les différents sites de
           plongées pour devenir plus visible aux clients potentiels !</p>
       </div>
     </div>
