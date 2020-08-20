@@ -155,7 +155,7 @@
                 }
             },
             validateDescription(value) {
-                if (/^[a-zA-Z0-9 ,;.!'’çêâéèà@'":€)(-]{10,5000}$/.test(value)) {
+                if (/^[a-zA-Z0-9 ,;.!'’îûçêâéèà@'":€)(-]{10,5000}$/.test(value)) {
                     this.msg['description'] = '';
                     this.validator['description'] = true;
                 } else {

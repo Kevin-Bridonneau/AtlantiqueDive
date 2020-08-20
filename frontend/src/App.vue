@@ -2,13 +2,8 @@
   <div id="app">
     <div class="navbar  navbar-expand-lg justify-content-between">
       <h1 class="navbar-brand">
-        Moi je plonge à l'ouest !
+        Je plonge en Atlantique !
       </h1>
-      <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button> -->
-      <!-- <div class="collapse navbar-collapse" id="navbarNav"> -->
       <ul class="navbar-nav">
         <div v-if="this.$store.state.userData.name == undefined" class="d-flex">
           <li class="nav-item mr-2">
@@ -31,7 +26,6 @@
         </div>
       </ul>
     </div>
-    <!-- </div> -->
     <router-view />
   </div>
 </template>
@@ -67,9 +61,14 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
-  body{
-    font-family: 'Roboto', sans-serif;
-  }
+#app{
+  background-image: url("./assets/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: 2000px;
+    padding-bottom: 150px;
+}
+
+
   a {
     font-family: 'Roboto', sans-serif;
     color: white !important;
@@ -102,10 +101,8 @@
   }
 
   body {
+    background-color: 	#010b17!important;
     font-family: 'Roboto', sans-serif;
-    background-image: url("./assets/bg.jpg");
-    background-repeat: no-repeat;
-    background-size: 2000px;
   }
 
   .card-body {

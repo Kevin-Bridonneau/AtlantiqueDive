@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Aug 18, 2020 at 05:48 PM
+-- Generation Time: Aug 20, 2020 at 10:05 AM
 -- Server version: 5.7.31-0ubuntu0.18.04.1
 -- PHP Version: 7.2.33-1+ubuntu18.04.1+deb.sury.org+1
 
@@ -44,8 +44,21 @@ CREATE TABLE `divesites` (
 --
 
 INSERT INTO `divesites` (`id`, `name`, `description`, `lat`, `lng`, `depth`, `visibility`, `current`, `pathtopicture`, `verified`) VALUES
-(1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).Il fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.37, -2.35, 47, 'Bonne', 'Moyen', '/L\' Afrique/l-afrique-1597762601.jpg', 1),
-(16, 'Armor 150', 'Il s’agit d’un ponton de servitude : ponton bigue. C’est un catamaran de la société de travaux maritimes Armor, probablement coulé dans les années 70 alors qu’il était en remorque. Il servait à récupérer et soulever en surface les câbles transatlantiques en vue de leur réparation.Lors de son naufrage, le ponton bigue s’est retourné à une profondeur de 40 45 mètres : exposant ses deux coques lisses réunies par un maillage de poutrelles de liaison. Il est possible de passer en plusieurs endroits sous les coques pour rentrer à l’intérieur. Les deux coques en acier sont liaisonnées par des profilés métalliques.Engin de manutention flottant utilisé dans le levage des colis lourds. La partie levage, montée sur un ponton, est constituée d\'une mâture prolongée d\'une fléchette et de treuils commandant le levage et les mouvements d\'affalement et de relevage de la mâture. Les déplacements en plan sont effectués sur le plan d\'eau par des treuils de papillonnage ou par des propulseurs équipant le ponton. L\'équilibrage au renversement est assuré par ballastage du ponton.La hauteur de levage sous crochet varie, selon les engins entre 20 m et 200 m et suivant l\'inclinaison de la mâture qui fixe la portée.', 46.31, -2.10, 42, 'Bonne', 'Moyen', '/Armor 150/armor-150-1597764412.jpg', 1);
+(1, 'L\' Afrique', 'L’Afrique est un paquebot appartenant à la ligne maritime des Chargeurs réunis ; construit en 1907, il effectue sa traversée inaugurale le 22 juillet 1908. Il avait pour mission de rallier les différents ports de l\'Afrique française (AOF et AEF).Il fait naufrage le 12 janvier 1920 par gros temps aux abords nord-est du plateau de Rochebonne, à moins de 23 milles (42 km) des Sables-d\'Olonne (Vendée, France) avec à son bord 602 personnes dont 568 périrent dans le naufrage. Cet accident est la plus grande catastrophe maritime française par le nombre de victimes mais a été peu médiatisé à cause de l’élection présidentielle ayant lieu le même mois en 1920.', 46.33, -2.18, 47, 'Bonne', 'Moyen', '/L\' Afrique/l-afrique-1597762601.jpg', 1),
+(16, 'Armor 150', 'Il s’agit d’un ponton de servitude : ponton bigue. C’est un catamaran de la société de travaux maritimes Armor, probablement coulé dans les années 70 alors qu’il était en remorque. Il servait à récupérer et soulever en surface les câbles transatlantiques en vue de leur réparation.Lors de son naufrage, le ponton bigue s’est retourné à une profondeur de 40 45 mètres : exposant ses deux coques lisses réunies par un maillage de poutrelles de liaison. Il est possible de passer en plusieurs endroits sous les coques pour rentrer à l’intérieur. Les deux coques en acier sont liaisonnées par des profilés métalliques.Engin de manutention flottant utilisé dans le levage des colis lourds. La partie levage, montée sur un ponton, est constituée d\'une mâture prolongée d\'une fléchette et de treuils commandant le levage et les mouvements d\'affalement et de relevage de la mâture. Les déplacements en plan sont effectués sur le plan d\'eau par des treuils de papillonnage ou par des propulseurs équipant le ponton. L\'équilibrage au renversement est assuré par ballastage du ponton.La hauteur de levage sous crochet varie, selon les engins entre 20 m et 200 m et suivant l\'inclinaison de la mâture qui fixe la portée.', 46.52, -2.16, 42, 'Bonne', 'Moyen', '/Armor 150/armor-150-1597764412.jpg', 1),
+(17, 'Allie', 'Parti du Swansea en 1917 pour Bordeaux il est coulé le 5 janvier à l\'explosif par le UB39. L\'équipage est récupéré par l\'Alma-Jeanne des Sables d\'Olonne.', 46.25, -1.76, 31, 'Bonne', 'Faible', '/Allie/allie-1597907328.jpg', 1),
+(18, 'Anglo Patagonian', 'Cargo anglais des Nitrate Producers.Naufrage le 11 juillet 1917, il est torpillé par le UC72.', 46.45, -2.17, 45, 'Bonne', 'Moyen', '/Anglo Patagonian/anglo-patagonian-1597907712.jpg', 1),
+(19, 'Azie', 'Ce Drague à godets fait nauffrage le 8 octobre 1969, tractée par le remorqueur Anvers, elle rompts sa remorque et coule par mer déchaînée.', 46.45, -2.40, 60, 'Bonne', 'Moyen', '/Azie/azie-1597908090.jpg', 1),
+(20, 'Californian', 'Ce cargo à vapeur fait naufrage le 22 juin 1918 à 5h05, il touche une mine et coule à 9h03.', 46.23, -2.20, 46, 'Bonne', 'Moyen', '/Californian/californian-1597908244.jpg', 1),
+(21, 'Caroni', 'Ce cargon britannique à vapeur parti de Londres, le 7 septembre 1915 pour Bordeaux, est arraisonnée par le U20 qui le torpille après que l\'équipage ait pris place dans des chaloupes. Le cargo coule en 10 minutes.', 46.07, -1.80, 0, 'Bonne', 'Moyen', '/Caroni/caroni-1597908440.jpg', 1),
+(22, 'Cimcour', 'Ce cimentier heurte une mine le 14 octobre 1940, à1h50, et coule 40s plus tard.', 46.03, -2.17, 38, 'Moyenne', 'Moyen', '/Cimcour/cimcour-1597908625.jpg', 1),
+(23, 'Cornelis', 'Ce remorqueur à vapeur est réquisitionné en 1940 par les allemands, il devient auxiliaire de dragueur de mines sous le numéro M4227. Le 15 avrile 1942, il coule à 27 milles de La Pallince pour une raison inconnue.', 46.13, -1.68, 33, 'Moyenne', 'Moyen', '/Cornelis/cornelis-1597908928.jpg', 1),
+(24, 'Le Frederic Morel', 'Ce charbonnier fait naufrage le 27 octobre 1910, après qu\'un incendie se soit déclaré à bord.', 46.42, -2.05, 38, 'Moyenne', 'Moyen', '/Le Frederic Morel/le-frederic-morel-1597909150.jpg', 1),
+(25, 'John G. Mac Cullough', 'Bateau des grands lacs américains, il est torpillé par le UB 74 le 18 mai 1918.', 46.55, -2.27, 47, 'Bonne', 'Moyen', '/John G. Mac Cullough/john-g-mac-cullough-1597909435.jpg', 1),
+(26, 'Niobe', 'Ce charbonnier vraquier de la Navan Caennaise est torpillé par le UC 21 le 16 février 1917.', 46.23, -1.80, 38, 'Bonne', 'Moyen', '/Niobe/niobe-1597909591.jpg', 1),
+(27, 'Sauerland', 'Ce cargo céréalier transformé en briseur de blocus par les allemands est coulé au cours de l\'opération Kinétic, le 12 août 1944. Il est victime d\'une torpille tirée par le Piorun (bateau polonais).', 46.08, -1.70, 33, 'Bonne', 'Moyen', '/Sauerland/sauerland-1597909896.jpg', 1),
+(28, 'Sequana', 'Paquebot de la Compagnie Sud Atlantique, il est torpillé par le UC 72, le 8 juin 1917.', 46.62, -2.37, 47, 'Bonne', 'Moyen', '/Sequana/sequana-1597910055.jpg', 1),
+(29, 'Le Ville de Dieppe', 'Trois mâts barque, bateau citerne. En quittant La Palice, le bateau est attaqué au canon par l\'UC 21. Il sombre lentement en s\'inclinant sur tribord le 12 avril 1917. Tout l\'équipage sera receuilli par le sous-marin français Germinal.', 45.98, -1.87, 52, 'Bonne', 'Moyen', '/Le Ville de Dieppe/le-ville-de-dieppe-1597910352.jpg', 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +240,8 @@ CREATE TABLE `presence` (
 INSERT INTO `presence` (`id`, `dive_id`, `club_id`) VALUES
 (2, 1, 4),
 (3, 1, 3),
-(4, 3, 3);
+(4, 3, 3),
+(5, 16, 3);
 
 -- --------------------------------------------------------
 
@@ -255,11 +269,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `type`, `adress`, `phone`, `website`, `created_at`, `updated_at`) VALUES
-(1, 'Kbridonneau', 'bridonneau.kevin@gmail.com', NULL, '$2y$10$9o.w/Hu60Zv3APCYr1aBxe2W6lKD9JEUx.CI0PmkUggl0FSWiLen.', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 08:31:04', '2020-08-11 08:31:04'),
+(1, 'KevinBridonneau', 'bridonneau.kevin@gmail.com', NULL, '$2y$10$9o.w/Hu60Zv3APCYr1aBxe2W6lKD9JEUx.CI0PmkUggl0FSWiLen.', 'GcBh5M8kjaUNgr8ZPm8pL5bRMTJK2WTyDeKJmmYYxx6yryhq5wIc0RfT4ciV', 'plongeur', NULL, NULL, NULL, '2020-08-11 08:31:04', '2020-08-11 08:31:04'),
 (2, 'Jean Claude', 'test@gmail.com', NULL, '$2y$10$Z8ws/C25wjgdczObB591R.m7wOcvTDsbBeG8rYpbIMzEegr6ctpZG', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 12:28:39', '2020-08-11 12:28:39'),
-(3, 'Scy85', 'scy85@gmail.com', NULL, '$2y$10$NXZG.9sV18zLJAMD363pwOAlV7Zatv/iqrFXMct1znaLBiiwGlU.u', NULL, 'club', 'La Roche Sur Yon', '02 40 56 56 56', 'http://www.scy85.fr/', '2020-08-11 12:39:21', '2020-08-11 12:39:21'),
+(3, 'SCY85', 'scy85@gmail.com', NULL, '$2y$10$NXZG.9sV18zLJAMD363pwOAlV7Zatv/iqrFXMct1znaLBiiwGlU.u', '8RymgFGRMdM2dzyXIhTqGA9CohXUXshX0LTBr3FLr4H27DBBqmbVT816MfBL', 'club', 'La Roche Sur Yon', '02 40 56 56 56', 'http://www.scy85.fr/', '2020-08-11 12:39:21', '2020-08-11 12:39:21'),
 (4, 'SCPT', 'scptt@gmail.com', NULL, '$2y$10$FKkHVjScnSgLPpJM7LWyS.mnb1ZSQlm/jJzovm5CC.Iw1VJDQsE3S', NULL, 'club', 'Nantes', '02 40 40 40 40', 'scptt.org', '2020-08-11 13:03:05', '2020-08-11 13:03:05'),
-(5, 'admin', 'admin@admin.com', NULL, '$2y$10$vCioRAiGDO.GVJP871ZsaeMbtZwFZLuHkmI8Kn7M9Yr/HUwhiJOQ6', NULL, 'admin', NULL, NULL, NULL, '2020-08-12 16:27:07', '2020-08-12 16:27:07'),
+(5, 'admin', 'admin@admin.com', NULL, '$2y$10$vCioRAiGDO.GVJP871ZsaeMbtZwFZLuHkmI8Kn7M9Yr/HUwhiJOQ6', 'PpEKzY4GnYiBWrYy3FDSrbFsB4z5hFhHnGm8FH3WJPRAjoOdBlJxLNVpRthe', 'admin', NULL, NULL, NULL, '2020-08-12 16:27:07', '2020-08-12 16:27:07'),
 (6, 'theadmin', 'theadmin@gmail.com', NULL, '$2y$10$YBzXBir0jONEB9BsbX7g3OQmgX.s/fL3zZGRWrGF.1FKR7m0Me06m', NULL, 'admin', NULL, NULL, NULL, '2020-08-13 11:19:46', '2020-08-13 11:19:46'),
 (10, 'pixi', 'pixi@gmail.com', NULL, '$2y$10$Z8ws/C25wjgdczObB591R.m7wOcvTDsbBeG8rYpbIMzEegr6ctpZG', NULL, 'plongeur', NULL, NULL, NULL, '2020-08-11 12:28:39', '2020-08-11 12:28:39'),
 (12, 'AdminCréeparAdmin', 'admintest@gmail.com', NULL, '$2y$10$hQVgKpnhXrGDPMpDfawL.eejosHmuo8KBGDvUIJ6ameW/DPNN8zE.', NULL, 'admin', NULL, NULL, NULL, '2020-08-14 10:49:57', '2020-08-14 10:49:57'),
@@ -358,7 +372,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `divesites`
 --
 ALTER TABLE `divesites`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 --
 -- AUTO_INCREMENT for table `failed_jobs`
 --
@@ -388,7 +402,7 @@ ALTER TABLE `oauth_personal_access_clients`
 -- AUTO_INCREMENT for table `presence`
 --
 ALTER TABLE `presence`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `users`
 --

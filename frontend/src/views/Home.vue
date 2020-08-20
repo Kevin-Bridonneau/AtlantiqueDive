@@ -1,9 +1,15 @@
 <template>
   <div class="home">
     <navbar />
-    <gmap-map :options="{zoomControl: false,fullscreenControl: false,disableDefaultUi: true}" :center="center" :zoom="6"
-      style="width:100vw;  height: 90vh; top:0px; position: relative; z-index:2; border-bottom: 2px solid black">
-      <gmap-marker :key="index" v-for="(m, index) in markers" :position="m.position" @click="openWindow(m)">
+    <gmap-map :options="{
+        zoomControl: true,
+        fullscreenControl: false,
+        disableDefaultUi: true,
+        streetViewControl:false,
+        mapTypeId: `satellite`,
+       }" :center="center" :zoom="6"
+      style="width:100vw;  height: 90vh; top:0px; position: relative; z-index:20; border-bottom: 2px solid black">
+      <gmap-marker :key="index" v-for="(m, index) in markers" :icon="customIcon" :position="m.position" @click="openWindow(m)">
       </gmap-marker>
       <gmap-info-window @closeclick="window_open=false" :opened="window_open" :position="infowindow" :options="{
           pixelOffset: {
@@ -31,19 +37,23 @@
 -moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
         <h1 class="text text-center" style="width:100%">Êtes-vous un plongeur?</h1>
-        <h3 class="text text-center" style="width:100%">Explorer les sites de plongée</h3>
-        <p class="text text-center" style="width:100%">Utiliser notre carte pour découvrir les sites de plongée en atlantique, vous y retrouverez toute les infos
+        <h3 class="text text-center" style="width:100%;color:#003045;">Explorer les sites de plongée</h3>
+        <p class="text text-center" style="width:100%">Utiliser notre carte pour découvrir les sites de plongée en
+          atlantique, vous y retrouverez toute les infos
           nécessaire pour vous y rendre ainsi que les coordonées des club proposant des sortie sur place !</p>
-        <h3 class="text text-center" style="width:100%">Vous connaisser déjà un site de plongée?</h3>
-        <p class="text text-center" style="width:100%">Connecté vous et donnez votre avis sur le site (espèces présentes, accéssibilité etc)</p>
-        <h3 class="text text-center" style="width:100%">Vous ne trouver pas un site de plongée?</h3>
-        <p class="text text-center" style="width:100%">Connecté vous et proposé un site qui sera rapidement validé et placé sur la carte par nos experts !</p>
+        <h3 class="text text-center" style="width:100%;color:#003045;">Vous connaisser déjà un site de plongée?</h3>
+        <p class="text text-center" style="width:100%">Connecté vous et donnez votre avis sur le site (espèces
+          présentes, accéssibilité etc)</p>
+        <h3 class="text text-center" style="width:100%;color:#003045;">Vous ne trouver pas un site de plongée?</h3>
+        <p class="text text-center" style="width:100%">Connecté vous et proposé un site qui sera rapidement validé et
+          placé sur la carte par nos experts !</p>
       </div>
       <div class="row m-1 mt-5 mb-5 p-3" style="width:100%; background-color:white; border-radius: 25px;-webkit-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 -moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
 box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
         <h1 class="text text-center mt-2" style="width:100%">Êtes-vous un club ou une structure privée?</h1>
-        <p class="text text-center" style="width:100%">Connecté vous et ajouter vos coordonée sur les différents site de plongées pour devenir plus visible aux clients potentiels !</p>
+        <p class="text text-center" style="width:100%">Connecté vous et ajouter vos coordonée sur les différents site de
+          plongées pour devenir plus visible aux clients potentiels !</p>
       </div>
     </div>
     <div v-if="submissionProposal === true">
@@ -69,6 +79,7 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
 </template>
 
 <script>
+  import marker from '@/assets/logo.png';
   import auth from '@/services/authentification';
   import navbar from '@/components/Header.vue';
   import DiveSiteProposal from '@/components/DiveSiteProposal.vue';
@@ -83,6 +94,7 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
     },
     data() {
       return {
+        customIcon: marker,
         check: false,
         center: {
           //center to La Rochelle city
@@ -163,12 +175,15 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
 
 <style>
   .proposalButton {
+
+
     margin: 10px;
     vertical-align: center;
     right: 0%;
-    position: fixed;
-
-    z-index: 1;
+    position: absolute;
+    z-index: 200;
+    display: flex;
+    top: 150px;
   }
 
   .btn-grad {
