@@ -25,6 +25,10 @@
           <button class="btn btn-info" @click="more">Plus d'infos</button>
         </div>
       </gmap-info-window>
+      <div v-if="check === true">
+      <gmap-marker :position="proposalPosition">
+      </gmap-marker>
+      </div>
     </gmap-map>
     <button class="proposalButton btn btn-grad" v-if="proposalButton === true" @click="submit">Proposer un nouveau site
       de
@@ -94,6 +98,10 @@ box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);p">
     },
     data() {
       return {
+        proposalPosition: {
+          lat: 46.1667,
+          lng: -1.15
+        },
         customIcon: marker,
         check: false,
         center: {

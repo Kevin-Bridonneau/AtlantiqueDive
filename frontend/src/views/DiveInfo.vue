@@ -2,8 +2,9 @@
   <div id="diveInfo">
     <div class="container">
       <div class="card mt-3 mb-3" style="background-color:#f4f4f4e3;">
-        <div class="card-header">
+        <div class="card-header d-flex justify-content-between">
           <h1 class="text-center">{{ diveData.name }}</h1>
+          <button class="btn btn-warning" @click="back">Retour</button>
         </div>
         <div class="card-body justify-content-center">
           <div id="diveImg" class="d-flex align-items-center overflow-auto" style="max-width:100%;max-height:1250px">
@@ -124,6 +125,7 @@
         image.src = contents;
         let selector = document.querySelector('#diveImg');
         image.setAttribute('style', 'margin-left:auto;margin-right:auto;');
+        image.setAttribute('alt', 'image de '+this.diveData.name);
         selector.appendChild(image);
       })
       if (blob instanceof Blob) reader.readAsDataURL(blob)
@@ -164,8 +166,10 @@
       }
     },
     methods: {
-      getImg() {
-        return this.img;
+      back(){
+        this.$router.push({
+          path: '/'
+        })
       },
       async addNotice() {
         this.check = true;

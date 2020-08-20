@@ -1,9 +1,11 @@
 <template>
   <div id="DiveSiteProposal">
-    <div id="pop" class="container-flex mx-4   mt-5 fixed-top">
+    <div id="pop" class="container-flex mx-4 mt-5">
       <div class="row justify-content-center">
         <div class="card  mb-3 align-item-center d-flex"
-          style="max-width: 90vw; margin:20px; top:10px;position: absolute; z-index:10">
+          style="max-width: 90vw; margin:20px; top:80vh;position: absolute; z-index:200;-webkit-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
+-moz-box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);
+box-shadow: 0px 10px 24px 0px rgba(0,0,0,0.75);">
           <div class="card-header d-flex justify-content-between">
             <h4>Proposition site de plongée</h4>
             <button type="submit" class="btn btn-danger ml-5" @click="cancel()">
@@ -80,13 +82,13 @@
                 <label>Lattitude</label>
               </div>
               <div class="row mt-2">
-                <input style="width:100%" required type="number" step="any" name="lat" v-model="lat">
+                <input style="width:100%" required type="number" step="any" name="lat" v-model="lat" @change="modifyCenterLat">
               </div>
               <div class="row mt-2">
                 <label>Longitude</label>
               </div>
               <div class="row mt-2">
-                <input style="width:100%" required type="number" step="any" name="lng" v-model="lng">
+                <input style="width:100%" required type="number" step="any" name="lng" v-model="lng" @change="modifyCenterLng">
               </div>
               <div class="row mt-2">
                 <button style="width:100%" type="submit" class="btn btn-info">
@@ -114,8 +116,8 @@
         visibility: "",
         current: "",
         file: null,
-        lat: 0,
-        lng: 0,
+        lat: this.$parent.proposalPosition.lat,
+        lng: this.$parent.proposalPosition.lng,
         msg: [],
         validator: [],
         info: false
@@ -147,6 +149,14 @@
       this.validator['current'] = false;
     },
     methods: {
+      modifyCenterLat(){
+        this.$parent.proposalPosition.lat = parseFloat(this.lat);
+        console.log(this.$parent.proposalPosition.lat)
+      },
+      modifyCenterLng(){
+        this.$parent.proposalPosition.lng = parseFloat(this.lng);
+        console.log(this.$parent.proposalPosition.lng)
+      },
       validateName(value) {
         if (/^[a-zA-Z]+(?:[ '-][a-zA-Z]+)*/.test(value)) {
           this.msg['name'] = '';
@@ -189,22 +199,6 @@
       async submit() {
         if (this.validator.name === true && this.validator.description === true && this.validator.visibility ===
           true && this.validator.current === true) {
-          // let body = {
-          //   name: this.name,
-          //   description: this.description,
-          //   depth: parseInt(this.depth),
-          //   visibility: this.visibility,
-          //   current: this.current,
-          //   picture: this.picture,
-          //   lat: parseFloat(this.lat),
-          //   lng: parseFloat(this.lng),
-          //   pathToPicture: "/image/test.jpg",
-          //   verified: false
-          // }
-          // let requestStatus;
-          // const res = await auth.addDiveSite(body).catch(error => {
-          //   requestStatus = error.response.status
-          // });
           let formData = new FormData();
                     formData.append('pathToPicture', this.file);
                     formData.append('name', this.name);
@@ -215,7 +209,6 @@
                     formData.append('lat', parseFloat(this.lat));
                     formData.append('lng', parseFloat(this.lng));
                     formData.append('verified', 0);
-
                     axios.post('/api/divesite',
                             formData,
                         )
