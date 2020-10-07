@@ -1,11 +1,6 @@
 # AtlantiqueDive
 Website bringing together dive sites in the French Atlantic
 
-# Hosting
-If you want to see the lattest release go [here](http://3.129.67.228/)
-
-
-
 ## Install
 
 Clone the github project
